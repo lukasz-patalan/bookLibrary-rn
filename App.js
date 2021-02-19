@@ -1,21 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
+import { createDrawerNavigator } from "react-navigation-drawer";
+import { DashboardScreen } from "./src/screens/DashboardScreen";
+import { BooksCollectionScreen } from "./src/screens/BooksCollectionScreen";
+import { Menu } from "./src/components/Menu";
+import { AddBookScreen } from "./src/screens/AddBookScreen";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+const navigator = createSwitchNavigator({
+    mainFlow: createDrawerNavigator(
+        {
+            Dashboard: DashboardScreen,
+            BooksCollection: BooksCollectionScreen,
+            AddBook: AddBookScreen,
+        },
+        {
+            initialRouteName: "Dashboard",
+            contentComponent: Menu,
+            // overlayColor: "transparent",
+            contentOptions: {
+                activeTintColor: "#000000",
+                activeBackgroundColor: "#e6e6e6",
+            },
+        }
+    ),
 });
+
+export default createAppContainer(navigator);
