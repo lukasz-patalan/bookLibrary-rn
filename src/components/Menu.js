@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { colors } from "../constans/theme";
 import { menuStyles } from "../styles";
@@ -16,7 +16,12 @@ export const Menu = ({ navigation }) => {
     };
     return (
         <View style={menuStyles.container}>
-            <Text style={menuStyles.title}>Menu</Text>
+            <View style={menuStyles.title}>
+                <Image
+                    style={{ width: 150, height: 150 }}
+                    source={require("../assets/logo.png")}
+                />
+            </View>
             <TouchableWithoutFeedback
                 onPress={() => navigation.navigate("Dashboard")}
             >
@@ -82,7 +87,7 @@ export const Menu = ({ navigation }) => {
                     <Text style={menuStyles.item}>Account settings</Text>
                 </View>
             </TouchableWithoutFeedback>
-            <View style={{ paddingTop: 50 }}>
+            <View style={{ paddingTop: 30 }}>
                 <Button title="Sign out" />
             </View>
         </View>

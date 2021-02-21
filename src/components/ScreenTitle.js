@@ -11,7 +11,7 @@ export const ScreenTitle = ({ title }) => {
                 paddingLeft: 30,
                 color: colors.whiteText,
                 zIndex: 1,
-                fontSize: fontSize.Xlarge,
+                fontSize: fontSize.sectionTitle,
             }}
         >
             {title}

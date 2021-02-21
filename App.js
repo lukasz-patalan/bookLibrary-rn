@@ -4,16 +4,19 @@ import { DashboardScreen } from "./src/screens/DashboardScreen";
 import { BooksCollectionScreen } from "./src/screens/BooksCollectionScreen";
 import { Menu } from "./src/components/Menu";
 import { AddBookScreen } from "./src/screens/AddBookScreen";
+import { SignupScreen } from "./src/screens/SignupScreen";
 
 const navigator = createSwitchNavigator({
+    // loginFlow: createSwitchNavigator({}),
     mainFlow: createDrawerNavigator(
         {
             Dashboard: DashboardScreen,
             BooksCollection: BooksCollectionScreen,
             AddBook: AddBookScreen,
+            Signup: SignupScreen,
         },
         {
-            initialRouteName: "Dashboard",
+            initialRouteName: "Signup",
             contentComponent: Menu,
             // overlayColor: "transparent",
             contentOptions: {
