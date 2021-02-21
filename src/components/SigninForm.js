@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
-import { addBookStyles, SignupStyles } from "../styles";
+import { addBookStyles, signinStyles, SignupStyles } from "../styles";
 import {
     MaterialCommunityIcons,
     MaterialIcons,
@@ -10,7 +10,7 @@ import {
 import { buttonStyle, colors } from "../constans/theme";
 import { Button } from "react-native-elements";
 
-export const SignupForm = ({
+export const SigninForm = ({
     onChangeName,
     onChangeEmail,
     onChangePassword,
@@ -24,30 +24,22 @@ export const SignupForm = ({
     const handleSignup = () => {
         onSignup(email, password, () => navigation.navigate("AddBook"));
     };
-    const navigateToSignin = () => {
-        navigation.navigate("Signin");
+    const navigateToSignup = () => {
+        navigation.navigate("Signup");
     };
 
     return (
         <View>
-            <Text style={SignupStyles.title}>Create account</Text>
-            <View style={SignupStyles.formWrapper}>
-                <View style={SignupStyles.inputContainer}>
-                    <MaterialCommunityIcons
-                        name="account"
-                        size={24}
-                        color={colors.whiteText}
-                        style={SignupStyles.icon}
-                    />
+            <Text style={SignupStyles.title}>Welcome</Text>
 
-                    <TextInput
-                        placeholder="Name"
-                        value={name}
-                        onChangeText={onChangeName}
-                        style={SignupStyles.input}
-                        placeholderTextColor={colors.buttonActive}
-                    />
-                </View>
+            <View style={signinStyles.formWrapper}>
+                <MaterialIcons
+                    name="account-circle"
+                    size={100}
+                    color={colors.background}
+                    style={{ alignSelf: "center", marginBottom: 10 }}
+                />
+                <View style={SignupStyles.inputContainer}></View>
                 <View style={SignupStyles.inputContainer}>
                     <MaterialIcons
                         name="email"
@@ -83,20 +75,19 @@ export const SignupForm = ({
                         secureTextEntry={true}
                     />
                 </View>
-                <View style={SignupStyles.buttonWrapper}>
-                    {/* <Button title="Sign up" onPress={handleSignup} /> */}
+                <View style={signinStyles.buttonWrapper}>
                     <Button
                         buttonStyle={buttonStyle}
                         onPress={handleSignup}
-                        title="Sign up"
+                        title="Sign in"
                         loading={isLoading}
                     />
                 </View>
                 <View style={SignupStyles.bottomInfo}>
                     <Text style={SignupStyles.alreadyText}>
-                        Already have an account?{" "}
-                        <TouchableOpacity onPress={navigateToSignin}>
-                            <Text style={SignupStyles.signinText}>Sign in</Text>
+                        Don't have an account?{" "}
+                        <TouchableOpacity onPress={navigateToSignup}>
+                            <Text style={SignupStyles.signinText}>Sign up</Text>
                         </TouchableOpacity>
                     </Text>
                 </View>

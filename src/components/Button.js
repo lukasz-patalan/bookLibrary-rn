@@ -1,11 +1,11 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { fontSize } from "../constans/theme";
 
 export const Button = ({ onPress, title }) => {
     return (
-        <TouchableWithoutFeedback
+        <TouchableOpacity
             onPress={onPress}
             style={{
                 width: 190,
@@ -19,6 +19,6 @@ export const Button = ({ onPress, title }) => {
             <Text style={{ fontSize: fontSize.Xlarge, color: "white" }}>
                 {title}
             </Text>
-        </TouchableWithoutFeedback>
+        </TouchableOpacity>
     );
 };

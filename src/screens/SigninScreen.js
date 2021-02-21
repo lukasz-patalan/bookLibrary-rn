@@ -1,16 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import { View } from "react-native";
-import { SignupForm } from "../components/SignupForm";
 import { colors } from "../constans/theme";
 import {
-    changeSignupName,
-    changeSignupEmail,
-    changeSignupPassword,
+    changeName,
+    changeEmail,
+    changePassword,
     signupWithEmailAndPassword,
 } from "../actions/signup";
+import { SigninForm } from "../components/SigninForm";
 
-const SignupScreen = ({
+const SigninScreen = ({
     onChangeName,
     onChangeEmail,
     onChangePassword,
@@ -21,7 +21,6 @@ const SignupScreen = ({
     navigation,
     isLoading,
 }) => {
-    console.log(email);
     return (
         <View
             style={{
@@ -29,7 +28,7 @@ const SignupScreen = ({
                 flex: 1,
             }}
         >
-            <SignupForm
+            <SigninForm
                 onChangeName={onChangeName}
                 onChangeEmail={onChangeEmail}
                 onChangePassword={onChangePassword}
@@ -46,22 +45,22 @@ const SignupScreen = ({
 
 function mapStateToProps(state) {
     return {
-        name: state.signup.signupName,
-        email: state.signup.signupEmail,
-        password: state.signup.signupPassword,
-        isLoading: state.signup.isLoading,
+        name: state.name,
+        email: state.email,
+        password: state.password,
+        isLoading: state.isLoading,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        onChangeName: (nameValue) => dispatch(changeSignupName(nameValue)),
-        onChangeEmail: (emailValue) => dispatch(changeSignupEmail(emailValue)),
+        onChangeName: (nameValue) => dispatch(changeName(nameValue)),
+        onChangeEmail: (emailValue) => dispatch(changeEmail(emailValue)),
         onChangePassword: (passwordValue) =>
-            dispatch(changeSignupPassword(passwordValue)),
+            dispatch(changePassword(passwordValue)),
         onSignup: (email, password, navigateTo) =>
             dispatch(signupWithEmailAndPassword(email, password, navigateTo)),
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignupScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(SigninScreen);

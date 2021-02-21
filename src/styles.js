@@ -9,12 +9,34 @@ export const dashboardStyles = StyleSheet.create({
     },
 });
 
+export const signinStyles = StyleSheet.create({
+    formWrapper: {
+        marginTop: 80,
+        paddingTop: 50,
+        backgroundColor: colors.menuBackground,
+        borderTopLeftRadius: 80,
+        paddingBottom: 180,
+    },
+    buttonWrapper: {
+        alignItems: "center",
+        marginTop: 40,
+        marginBottom: 120,
+    },
+});
+
 export const SignupStyles = StyleSheet.create({
+    formWrapper: {
+        marginTop: 80,
+        paddingTop: 100,
+        backgroundColor: colors.menuBackground,
+        borderTopLeftRadius: 80,
+        paddingBottom: 180,
+    },
     title: {
         alignSelf: "center",
         fontSize: fontSize.sectionTitle,
         color: colors.whiteText,
-        marginBottom: 100,
+        marginTop: 120,
     },
     inputContainer: {
         alignItems: "center",
@@ -25,8 +47,8 @@ export const SignupStyles = StyleSheet.create({
         marginLeft: 40,
     },
     input: {
-        backgroundColor: colors.menuBackground,
-        height: 55,
+        backgroundColor: colors.background,
+        height: 60,
         width: 340,
         borderRadius: 8,
         fontSize: fontSize.large,
@@ -35,14 +57,29 @@ export const SignupStyles = StyleSheet.create({
     },
     buttonWrapper: {
         alignItems: "center",
-        marginTop: 50,
-        marginBottom: 30,
+        marginTop: 40,
+        marginBottom: 120,
     },
     icon: {
         position: "absolute",
-        top: 43,
+        top: 17,
         zIndex: 1,
         left: 52,
+    },
+    bottomInfo: {
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "row",
+    },
+    alreadyText: {
+        fontSize: fontSize.large,
+        color: colors.whiteText,
+    },
+    signinText: {
+        fontSize: fontSize.large,
+        color: colors.buttonActive,
+        position: "relative",
+        top: 3,
     },
 });
 
