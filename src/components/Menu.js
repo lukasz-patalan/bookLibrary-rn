@@ -1,10 +1,13 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
-import { colors } from "../constans/theme";
+import { buttonStyle, colors } from "../constans/theme";
 import { menuStyles } from "../styles";
 import { MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
-import { Button } from "../components/Button";
+import { Button } from "react-native-elements";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+import { auth } from "../firebase/firebaseConfig";
 export const Menu = ({ navigation }) => {
     const navigationIndex = navigation.state.index;
     const getColor = (index) => {
@@ -13,6 +16,13 @@ export const Menu = ({ navigation }) => {
         } else {
             return colors.whiteText;
         }
+    };
+    const handleSignOut = async () => {
+        await auth.signOut();
+        await AsyncStorage.removeItem("email");
+        await AsyncStorage.removeItem("password");
+
+        navigation.navigate("loginFlow");
     };
     return (
         <View style={menuStyles.container}>
@@ -88,7 +98,11 @@ export const Menu = ({ navigation }) => {
                 </View>
             </TouchableWithoutFeedback>
             <View style={{ paddingTop: 30 }}>
-                <Button title="Sign out" />
+                <Button
+                    buttonStyle={buttonStyle}
+                    onPress={handleSignOut}
+                    title="Sign out"
+                />
             </View>
         </View>
     );

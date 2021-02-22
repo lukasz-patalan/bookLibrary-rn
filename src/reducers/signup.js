@@ -2,7 +2,7 @@ import { ActionType } from "../actions/actionTypes";
 
 export const signupState = {
     signupName: "",
-    signupEmail: "qwdasdad",
+    signupEmail: "",
     signupPassword: "",
     isLoading: false,
 };

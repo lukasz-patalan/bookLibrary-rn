@@ -21,7 +21,13 @@ export const AddBookScreen = ({ navigation }) => {
                 <AddbookFirstSection />
                 <RateBook />
                 <AddBookStatus />
-                <View style={{ marginTop: 40, alignSelf: "center" }}>
+                <View
+                    style={{
+                        marginTop: 40,
+                        alignSelf: "center",
+                        paddingBottom: 50,
+                    }}
+                >
                     <Button title="Save book" />
                 </View>
             </View>

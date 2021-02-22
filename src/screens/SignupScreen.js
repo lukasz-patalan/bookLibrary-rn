@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { View } from "react-native";
+import { View, Keyboard } from "react-native";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+
 import { SignupForm } from "../components/SignupForm";
 import { colors } from "../constans/theme";
 import {
@@ -21,7 +23,6 @@ const SignupScreen = ({
     navigation,
     isLoading,
 }) => {
-    console.log(email);
     return (
         <View
             style={{
@@ -29,6 +30,7 @@ const SignupScreen = ({
                 flex: 1,
             }}
         >
+            {/* <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}> */}
             <SignupForm
                 onChangeName={onChangeName}
                 onChangeEmail={onChangeEmail}
@@ -40,6 +42,7 @@ const SignupScreen = ({
                 navigation={navigation}
                 isLoading={isLoading}
             />
+            {/* </TouchableWithoutFeedback> */}
         </View>
     );
 };

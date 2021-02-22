@@ -11,19 +11,22 @@ import { Menu } from "./src/components/Menu";
 import { AddBookScreen } from "./src/screens/AddBookScreen";
 import SignupScreen from "./src/screens/SignupScreen";
 import SigninScreen from "./src/screens/SigninScreen";
+import ResolveAuthScreen from "./src/screens/ResolveAuthScreen";
 
 const navigator = createSwitchNavigator({
-    // loginFlow: createSwitchNavigator({}),
+    resolveAuth: ResolveAuthScreen,
+    loginFlow: createSwitchNavigator({
+        Signin: SigninScreen,
+        Signup: SignupScreen,
+    }),
     mainFlow: createDrawerNavigator(
         {
             Dashboard: DashboardScreen,
             BooksCollection: BooksCollectionScreen,
             AddBook: AddBookScreen,
-            Signup: SignupScreen,
-            Signin: SigninScreen,
         },
         {
-            initialRouteName: "Signup",
+            // initialRouteName: "Signup",
             contentComponent: Menu,
             // overlayColor: "transparent",
             contentOptions: {

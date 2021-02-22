@@ -1,28 +1,31 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
-import { addBookStyles, signinStyles, SignupStyles } from "../styles";
 import {
-    MaterialCommunityIcons,
-    MaterialIcons,
-    FontAwesome,
-} from "@expo/vector-icons";
-import { buttonStyle, colors } from "../constans/theme";
+    TextInput,
+    TouchableOpacity,
+    Switch,
+} from "react-native-gesture-handler";
+
+import { signinStyles, SignupStyles } from "../styles";
+import { MaterialCommunityIcons, FontAwesome } from "@expo/vector-icons";
+import { buttonStyle, colors, fontSize } from "../constans/theme";
 import { Button } from "react-native-elements";
 
 export const SigninForm = ({
-    onChangeName,
     onChangeEmail,
     onChangePassword,
-    name,
     email,
     password,
-    onSignup,
+    onSignin,
     navigation,
     isLoading,
+    isSwitchRememberMeEnabled,
+    onToggleRemeberMeSwitch,
 }) => {
-    const handleSignup = () => {
-        onSignup(email, password, () => navigation.navigate("AddBook"));
+    const handleSignin = () => {
+        onSignin(email, password, isSwitchRememberMeEnabled, () =>
+            navigation.navigate("Dashboard")
+        );
     };
     const navigateToSignup = () => {
         navigation.navigate("Signup");
@@ -33,15 +36,15 @@ export const SigninForm = ({
             <Text style={SignupStyles.title}>Welcome</Text>
 
             <View style={signinStyles.formWrapper}>
-                <MaterialIcons
-                    name="account-circle"
+                <MaterialCommunityIcons
+                    name="account-check"
                     size={100}
-                    color={colors.background}
+                    color={colors.buttonActive}
                     style={{ alignSelf: "center", marginBottom: 10 }}
                 />
                 <View style={SignupStyles.inputContainer}></View>
                 <View style={SignupStyles.inputContainer}>
-                    <MaterialIcons
+                    <MaterialCommunityIcons
                         name="email"
                         size={24}
                         color={colors.whiteText}
@@ -74,11 +77,41 @@ export const SigninForm = ({
                         autoCapitalize="none"
                         secureTextEntry={true}
                     />
+                    <View
+                        style={{
+                            alignSelf: "flex-start",
+                            marginLeft: 35,
+                            marginTop: 25,
+                            flexDirection: "row",
+                            alignItems: "center",
+                        }}
+                    >
+                        <Switch
+                            value={isSwitchRememberMeEnabled}
+                            onValueChange={onToggleRemeberMeSwitch}
+                            trackColor={{ true: colors.buttonActive }}
+                            thumbColor={
+                                isSwitchRememberMeEnabled
+                                    ? colors.background
+                                    : colors.buttonActive
+                            }
+                        />
+                        <Text
+                            style={{
+                                color: colors.buttonActive,
+                                fontSize: fontSize.regular,
+                                marginLeft: 10,
+                            }}
+                        >
+                            Remeber me?
+                        </Text>
+                    </View>
                 </View>
+
                 <View style={signinStyles.buttonWrapper}>
                     <Button
                         buttonStyle={buttonStyle}
-                        onPress={handleSignup}
+                        onPress={handleSignin}
                         title="Sign in"
                         loading={isLoading}
                     />

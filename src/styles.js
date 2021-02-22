@@ -11,7 +11,7 @@ export const dashboardStyles = StyleSheet.create({
 
 export const signinStyles = StyleSheet.create({
     formWrapper: {
-        marginTop: 80,
+        marginTop: 40,
         paddingTop: 50,
         backgroundColor: colors.menuBackground,
         borderTopLeftRadius: 80,
@@ -19,14 +19,14 @@ export const signinStyles = StyleSheet.create({
     },
     buttonWrapper: {
         alignItems: "center",
-        marginTop: 40,
+        marginTop: 30,
         marginBottom: 120,
     },
 });
 
 export const SignupStyles = StyleSheet.create({
     formWrapper: {
-        marginTop: 80,
+        marginTop: 40,
         paddingTop: 100,
         backgroundColor: colors.menuBackground,
         borderTopLeftRadius: 80,
@@ -57,7 +57,7 @@ export const SignupStyles = StyleSheet.create({
     },
     buttonWrapper: {
         alignItems: "center",
-        marginTop: 40,
+        marginTop: 86,
         marginBottom: 120,
     },
     icon: {
@@ -160,50 +160,54 @@ export const searchInputStyles = StyleSheet.create({
 
 export const addBookStyles = StyleSheet.create({
     contentWrapper: {
-        paddingTop: 180,
+        marginTop: 130,
+        borderTopLeftRadius: 80,
+        paddingTop: 50,
+        backgroundColor: colors.menuBackground,
     },
     container: {
         flexDirection: "row",
         justifyContent: "space-around",
     },
     bookCover: {
-        backgroundColor: colors.menuBackground,
-        width: 125,
+        backgroundColor: colors.background,
+        width: 100,
         borderRadius: 8,
-        height: 190,
+        height: 100,
         alignItems: "center",
         justifyContent: "center",
     },
     photoIcon: {
-        color: colors.backgroundColor,
+        color: colors.menuBackground,
     },
     label: {
-        fontSize: fontSize.regular,
+        fontSize: fontSize.large,
         color: colors.whiteText,
         marginBottom: 10,
     },
     input: {
-        height: 48,
-        width: 240,
+        height: 50,
+        width: 260,
         borderRadius: 8,
-        backgroundColor: colors.menuBackground,
+        backgroundColor: colors.background,
         color: colors.whiteText,
-        fontSize: 17,
+        fontSize: fontSize.large,
         paddingLeft: 12,
     },
     selectIcon: {
         position: "relative",
         bottom: 38,
-        left: 208,
+        left: 340,
     },
     inputSelect: {
         color: colors.whiteText,
         borderRadius: 8,
         paddingLeft: 15,
         height: 48,
-        width: 240,
-        backgroundColor: colors.menuBackground,
+        width: 360,
+        backgroundColor: colors.background,
         fontSize: 16,
         zIndex: 1,
+        alignSelf: "center",
     },
 });

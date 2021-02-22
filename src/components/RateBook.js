@@ -8,7 +8,7 @@ export const RateBook = () => {
     return (
         <View
             style={{
-                backgroundColor: colors.menuBackground,
+                backgroundColor: colors.background,
                 height: 130,
                 width: 360,
                 alignSelf: "center",

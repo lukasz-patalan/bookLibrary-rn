@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
-import { addBookStyles, SignupStyles } from "../styles";
+import { SignupStyles } from "../styles";
 import {
     MaterialCommunityIcons,
     MaterialIcons,
@@ -22,12 +22,11 @@ export const SignupForm = ({
     isLoading,
 }) => {
     const handleSignup = () => {
-        onSignup(email, password, () => navigation.navigate("AddBook"));
+        onSignup(email, password, () => navigation.navigate("Signin"));
     };
     const navigateToSignin = () => {
         navigation.navigate("Signin");
     };
-
     return (
         <View>
             <Text style={SignupStyles.title}>Create account</Text>
@@ -84,7 +83,6 @@ export const SignupForm = ({
                     />
                 </View>
                 <View style={SignupStyles.buttonWrapper}>
-                    {/* <Button title="Sign up" onPress={handleSignup} /> */}
                     <Button
                         buttonStyle={buttonStyle}
                         onPress={handleSignup}

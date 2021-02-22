@@ -28,7 +28,7 @@ export const AddBookStatus = () => {
                         height: 100,
                         width: 100,
                         borderRadius: 8,
-                        backgroundColor: colors.menuBackground,
+                        backgroundColor: colors.background,
                         justifyContent: "center",
                         alignItems: "center",
                     }}
@@ -45,7 +45,7 @@ export const AddBookStatus = () => {
                         height: 100,
                         width: 100,
                         borderRadius: 8,
-                        backgroundColor: colors.menuBackground,
+                        backgroundColor: colors.background,
                         justifyContent: "center",
                         alignItems: "center",
                     }}

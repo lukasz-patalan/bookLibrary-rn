@@ -1,25 +1,27 @@
 import React from "react";
 import { connect } from "react-redux";
-import { View } from "react-native";
+import { View, Keyboard } from "react-native";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+
 import { colors } from "../constans/theme";
 import {
-    changeName,
-    changeEmail,
-    changePassword,
-    signupWithEmailAndPassword,
-} from "../actions/signup";
+    changeLoginEmail,
+    changeLoginPassword,
+    signin,
+    toggleRemeberMeSwitch,
+} from "../actions/signin";
 import { SigninForm } from "../components/SigninForm";
 
 const SigninScreen = ({
-    onChangeName,
     onChangeEmail,
     onChangePassword,
-    name,
     email,
     password,
-    onSignup,
+    onSignin,
     navigation,
     isLoading,
+    isSwitchRememberMeEnabled,
+    onToggleRemeberMeSwitch,
 }) => {
     return (
         <View
@@ -28,38 +30,40 @@ const SigninScreen = ({
                 flex: 1,
             }}
         >
+            {/* <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}> */}
             <SigninForm
-                onChangeName={onChangeName}
                 onChangeEmail={onChangeEmail}
                 onChangePassword={onChangePassword}
-                name={name}
                 email={email}
                 password={password}
-                onSignup={onSignup}
+                onSignin={onSignin}
                 navigation={navigation}
                 isLoading={isLoading}
+                isSwitchRememberMeEnabled={isSwitchRememberMeEnabled}
+                onToggleRemeberMeSwitch={onToggleRemeberMeSwitch}
             />
+            {/* </TouchableWithoutFeedback> */}
         </View>
     );
 };
 
 function mapStateToProps(state) {
     return {
-        name: state.name,
-        email: state.email,
-        password: state.password,
-        isLoading: state.isLoading,
+        email: state.signin.email,
+        password: state.signin.password,
+        isLoading: state.signin.isLoading,
+        isSwitchRememberMeEnabled: state.signin.isSwitchRememberMeEnabled,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        onChangeName: (nameValue) => dispatch(changeName(nameValue)),
-        onChangeEmail: (emailValue) => dispatch(changeEmail(emailValue)),
+        onChangeEmail: (emailValue) => dispatch(changeLoginEmail(emailValue)),
         onChangePassword: (passwordValue) =>
-            dispatch(changePassword(passwordValue)),
-        onSignup: (email, password, navigateTo) =>
-            dispatch(signupWithEmailAndPassword(email, password, navigateTo)),
+            dispatch(changeLoginPassword(passwordValue)),
+        onSignin: (email, password, rememberMe, goToDashboard) =>
+            dispatch(signin(email, password, rememberMe, goToDashboard)),
+        onToggleRemeberMeSwitch: () => dispatch(toggleRemeberMeSwitch()),
     };
 }
 
