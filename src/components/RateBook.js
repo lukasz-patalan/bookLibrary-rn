@@ -3,18 +3,12 @@ import { AntDesign } from "@expo/vector-icons";
 import { View, Text } from "react-native";
 import { colors } from "../constans/theme";
 import { addBookStyles } from "../styles";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
-export const RateBook = () => {
+export const RateBook = ({ onChangeRate, rate }) => {
+    console.log(rate);
     return (
-        <View
-            style={{
-                backgroundColor: colors.background,
-                height: 130,
-                width: 360,
-                alignSelf: "center",
-                borderRadius: 8,
-            }}
-        >
+        <View style={addBookStyles.rateView}>
             <Text
                 style={[
                     addBookStyles.label,
@@ -23,24 +17,47 @@ export const RateBook = () => {
             >
                 Rate the book
             </Text>
-            <View
-                style={{
-                    flexDirection: "row",
-                    justifyContent: "space-around",
-                    paddingHorizontal: 55,
-                    marginTop: 10,
-                }}
-            >
-                <AntDesign name="staro" size={30} color={colors.whiteText} />
-                <AntDesign name="staro" size={30} color={colors.whiteText} />
-                <AntDesign name="staro" size={30} color={colors.whiteText} />
-                <AntDesign name="staro" size={30} color={colors.whiteText} />
-                <AntDesign name="staro" size={30} color={colors.whiteText} />
+            <View style={addBookStyles.rateContainer}>
+                <TouchableWithoutFeedback onPress={() => onChangeRate(1)}>
+                    <AntDesign
+                        name="staro"
+                        size={30}
+                        color={colors.whiteText}
+                    />
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => onChangeRate(2)}>
+                    <AntDesign
+                        name="staro"
+                        size={30}
+                        color={colors.whiteText}
+                    />
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => onChangeRate(3)}>
+                    <AntDesign
+                        name="staro"
+                        size={30}
+                        color={colors.whiteText}
+                    />
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => onChangeRate(4)}>
+                    <AntDesign
+                        name="staro"
+                        size={30}
+                        color={colors.whiteText}
+                    />
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => onChangeRate(5)}>
+                    <AntDesign
+                        name="staro"
+                        size={30}
+                        color={colors.whiteText}
+                    />
+                </TouchableWithoutFeedback>
             </View>
             <Text
                 style={[
                     addBookStyles.label,
-                    { alignSelf: "center", marginTop: 23 },
+                    { alignSelf: "center", marginTop: 25 },
                 ]}
             >
                 very good!

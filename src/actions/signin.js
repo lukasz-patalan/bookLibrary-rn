@@ -1,5 +1,5 @@
 import { Alert } from "react-native";
-import { auth } from "../firebase/firebaseConfig";
+import { auth, fireBase } from "../firebase/firebaseConfig";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { ActionType } from "./actionTypes";

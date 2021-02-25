@@ -34,7 +34,7 @@ export const SignupForm = ({
                 <View style={SignupStyles.inputContainer}>
                     <MaterialCommunityIcons
                         name="account"
-                        size={24}
+                        size={20}
                         color={colors.whiteText}
                         style={SignupStyles.icon}
                     />
@@ -50,7 +50,7 @@ export const SignupForm = ({
                 <View style={SignupStyles.inputContainer}>
                     <MaterialIcons
                         name="email"
-                        size={24}
+                        size={20}
                         color={colors.whiteText}
                         style={SignupStyles.icon}
                     />
@@ -67,7 +67,7 @@ export const SignupForm = ({
                 <View style={{ alignItems: "center", marginBottom: 20 }}>
                     <FontAwesome
                         name="lock"
-                        size={25}
+                        size={20}
                         color={colors.whiteText}
                         style={[SignupStyles.icon, { left: 57 }]}
                     />

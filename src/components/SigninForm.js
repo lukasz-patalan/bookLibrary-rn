@@ -7,7 +7,11 @@ import {
 } from "react-native-gesture-handler";
 
 import { signinStyles, SignupStyles } from "../styles";
-import { MaterialCommunityIcons, FontAwesome } from "@expo/vector-icons";
+import {
+    MaterialCommunityIcons,
+    MaterialIcons,
+    FontAwesome,
+} from "@expo/vector-icons";
 import { buttonStyle, colors, fontSize } from "../constans/theme";
 import { Button } from "react-native-elements";
 
@@ -36,17 +40,17 @@ export const SigninForm = ({
             <Text style={SignupStyles.title}>Welcome</Text>
 
             <View style={signinStyles.formWrapper}>
-                <MaterialCommunityIcons
-                    name="account-check"
-                    size={100}
-                    color={colors.buttonActive}
+                <MaterialIcons
+                    name="account-circle"
+                    size={70}
+                    color={colors.background}
                     style={{ alignSelf: "center", marginBottom: 10 }}
                 />
                 <View style={SignupStyles.inputContainer}></View>
                 <View style={SignupStyles.inputContainer}>
                     <MaterialCommunityIcons
                         name="email"
-                        size={24}
+                        size={20}
                         color={colors.whiteText}
                         style={SignupStyles.icon}
                     />
@@ -56,14 +60,14 @@ export const SigninForm = ({
                         value={email}
                         onChangeText={onChangeEmail}
                         style={SignupStyles.input}
-                        placeholderTextColor={colors.buttonActive}
+                        placeholderTextColor={colors.textGray}
                         autoCapitalize="none"
                     />
                 </View>
                 <View style={{ alignItems: "center", marginBottom: 20 }}>
                     <FontAwesome
                         name="lock"
-                        size={25}
+                        size={20}
                         color={colors.whiteText}
                         style={[SignupStyles.icon, { left: 57 }]}
                     />
@@ -73,7 +77,7 @@ export const SigninForm = ({
                         value={password}
                         onChangeText={onChangePassword}
                         style={SignupStyles.input}
-                        placeholderTextColor={colors.buttonActive}
+                        placeholderTextColor={colors.textGray}
                         autoCapitalize="none"
                         secureTextEntry={true}
                     />
@@ -99,7 +103,7 @@ export const SigninForm = ({
                         <Text
                             style={{
                                 color: colors.buttonActive,
-                                fontSize: fontSize.regular,
+                                fontSize: fontSize.small,
                                 marginLeft: 10,
                             }}
                         >

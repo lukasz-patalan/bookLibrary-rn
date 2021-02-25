@@ -4,10 +4,19 @@ import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 
 import { colors } from "../constans/theme";
 import { addBookStyles } from "../styles";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
-export const AddBookStatus = () => {
+export const AddBookStatus = ({ onChangeStatus, status }) => {
+    const isReadingStatus = status === "Reading";
+    const isReadStatus = status === "Read";
+    const setReadStatus = () => {
+        onChangeStatus("Read");
+    };
+    const setReadingStatus = () => {
+        onChangeStatus("Reading");
+    };
     return (
-        <View style={{ marginTop: 20 }}>
+        <View style={{ marginTop: 30 }}>
             <Text
                 style={[
                     addBookStyles.label,
@@ -16,54 +25,51 @@ export const AddBookStatus = () => {
             >
                 Status
             </Text>
-            <View
-                style={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    paddingHorizontal: 80,
-                }}
-            >
-                <View
-                    style={{
-                        height: 100,
-                        width: 100,
-                        borderRadius: 8,
-                        backgroundColor: colors.background,
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}
+            <View style={addBookStyles.statusView}>
+                <TouchableWithoutFeedback
+                    style={addBookStyles.statusContainer}
+                    onPress={setReadStatus}
                 >
                     <Ionicons
                         name="checkmark-done"
                         size={30}
-                        color={colors.whiteText}
+                        color={
+                            isReadStatus ? colors.markedGreen : colors.whiteText
+                        }
                     />
-                    <Text style={{ color: colors.whiteText }}>Read</Text>
-                </View>
-                <View
-                    style={{
-                        height: 100,
-                        width: 100,
-                        borderRadius: 8,
-                        backgroundColor: colors.background,
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}
+                    <Text
+                        style={{
+                            color: isReadStatus
+                                ? colors.markedGreen
+                                : colors.whiteText,
+                        }}
+                    >
+                        Read
+                    </Text>
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback
+                    style={addBookStyles.starsWrapper}
+                    onPress={setReadingStatus}
                 >
                     <FontAwesome5
                         name="book-open"
                         size={20}
-                        color={colors.whiteText}
+                        color={
+                            isReadingStatus
+                                ? colors.markedGreen
+                                : colors.whiteText
+                        }
                     />
                     <Text
                         style={{
-                            color: colors.whiteText,
-                            marginTop: 7,
+                            color: isReadingStatus
+                                ? colors.markedGreen
+                                : colors.whiteText,
                         }}
                     >
                         Reading
                     </Text>
-                </View>
+                </TouchableWithoutFeedback>
             </View>
         </View>
     );

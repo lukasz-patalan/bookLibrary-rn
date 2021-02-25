@@ -1,12 +1,15 @@
 export const colors = {
-    background: "#424150",
-    menuBackground: "#33333d",
-    buttonActive: "#cf7c29",
+    background: "#20242a",
+    menuBackground: "#2b3038",
+    buttonActive: "#dab111",
     icons: "white",
     whiteText: "#fffcfa",
+    textGray: "#45494e",
+    markedGreen: "#88974E",
 };
 
 export const fontSize = {
+    small: 14,
     regular: 16,
     large: 18,
     Xlarge: 20,
@@ -14,10 +17,10 @@ export const fontSize = {
 };
 
 export const buttonStyle = {
-    width: 190,
+    width: 200,
     height: 50,
-    backgroundColor: "#eb9322",
-    borderRadius: 30,
+    backgroundColor: colors.buttonActive,
+    borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
 };

@@ -8,7 +8,7 @@ import configureStore from "./src/store";
 
 import { BooksCollectionScreen } from "./src/screens/BooksCollectionScreen";
 import { Menu } from "./src/components/Menu";
-import { AddBookScreen } from "./src/screens/AddBookScreen";
+import AddBookScreen from "./src/screens/AddBookScreen";
 import SignupScreen from "./src/screens/SignupScreen";
 import SigninScreen from "./src/screens/SigninScreen";
 import ResolveAuthScreen from "./src/screens/ResolveAuthScreen";
