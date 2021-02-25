@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
+import { Ionicons, FontAwesome5, AntDesign } from "@expo/vector-icons";
 
 import { colors } from "../constans/theme";
 import { addBookStyles } from "../styles";
@@ -16,15 +16,7 @@ export const AddBookStatus = ({ onChangeStatus, status }) => {
         onChangeStatus("Reading");
     };
     return (
-        <View style={{ marginTop: 30 }}>
-            <Text
-                style={[
-                    addBookStyles.label,
-                    { alignSelf: "center", marginBottom: 15 },
-                ]}
-            >
-                Status
-            </Text>
+        <View style={{ marginTop: 20, marginBottom: 20 }}>
             <View style={addBookStyles.statusView}>
                 <TouchableWithoutFeedback
                     style={addBookStyles.statusContainer}

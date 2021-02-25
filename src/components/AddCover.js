@@ -42,7 +42,7 @@ export default function AddCover({ onChangeCover, cover }) {
                 <MaterialIcons
                     name="photo-camera"
                     size={75}
-                    color={colors.menuBackground}
+                    color={colors.violetView}
                 />
             ) : (
                 <View>
@@ -64,7 +64,7 @@ export default function AddCover({ onChangeCover, cover }) {
                 </View>
             )}
             {!cover && (
-                <Text style={{ color: colors.buttonActive }}>Add cover</Text>
+                <Text style={{ color: colors.whiteText }}>Add cover</Text>
             )}
         </TouchableOpacity>
     );

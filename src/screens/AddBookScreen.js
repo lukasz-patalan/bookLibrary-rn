@@ -2,6 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import { Button } from "react-native-elements";
 import { addBookStyles, dashboardStyles } from "../styles";
+import { AntDesign } from "@expo/vector-icons";
 
 import { Header } from "../components/Header";
 import { ScreenTitle } from "../components/ScreenTitle";
@@ -53,14 +54,44 @@ const AddBookScreen = ({
                     cover={cover}
                     category={category}
                 />
-                <RateBook onChangeRate={onChangeRate} rate={rate} />
-                <AddBookStatus
-                    onChangeStatus={onChangeStatus}
-                    status={status}
-                />
                 <View
                     style={{
-                        marginTop: 50,
+                        backgroundColor: colors.insideBg,
+                        marginHorizontal: 20,
+                        borderRadius: 20,
+                        marginTop: 10,
+                        paddingTop: 65,
+                    }}
+                >
+                    <View
+                        style={{
+                            position: "absolute",
+                            backgroundColor: colors.darkRed,
+                            paddingVertical: 6,
+                            paddingHorizontal: 6,
+                            borderRadius: 50,
+                            top: 15,
+                            left: 15,
+                            zIndex: 1,
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}
+                    >
+                        <AntDesign
+                            name="heart"
+                            size={22}
+                            color={colors.whiteText}
+                        />
+                    </View>
+                    <RateBook onChangeRate={onChangeRate} rate={rate} />
+                    <AddBookStatus
+                        onChangeStatus={onChangeStatus}
+                        status={status}
+                    />
+                </View>
+                <View
+                    style={{
+                        marginTop: 15,
                         alignSelf: "center",
                     }}
                 >

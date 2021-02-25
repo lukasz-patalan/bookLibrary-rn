@@ -1,11 +1,15 @@
 export const colors = {
-    background: "#20242a",
-    menuBackground: "#2b3038",
+    background: "#2b3038",
+    menuBackground: "#324047",
+    insideBg: "#0f2029",
     buttonActive: "#dab111",
     icons: "white",
     whiteText: "#fffcfa",
     textGray: "#45494e",
     markedGreen: "#88974E",
+    redView: "#b37673",
+    darkRed: "#ba534d",
+    violetView: "#25323d",
 };
 
 export const fontSize = {

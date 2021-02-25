@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TextInput } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons, Foundation } from "@expo/vector-icons";
 
 import { colors } from "../constans/theme";
 import { addBookStyles } from "../styles";
@@ -23,57 +23,87 @@ export const AddbookFirstSection = ({
             <View style={addBookStyles.container}>
                 <View
                     style={{
-                        justifyContent: "center",
-                        paddingBottom: 5,
-                        paddingLeft: 5,
+                        position: "absolute",
+                        backgroundColor: colors.buttonActive,
+                        paddingVertical: 5,
+                        paddingHorizontal: 8,
+                        borderRadius: 50,
+                        top: 15,
+                        left: 15,
+                        zIndex: 1,
                     }}
                 >
-                    <AddCover onChangeCover={onChangeCover} cover={cover} />
+                    <Foundation
+                        name="pencil"
+                        size={24}
+                        color={colors.whiteText}
+                    />
                 </View>
-                <View>
-                    <View>
-                        <Text style={addBookStyles.label}>Author</Text>
-                        <TextInput
-                            style={addBookStyles.input}
-                            onChangeText={onChangeAuthor}
-                            value={author}
-                        />
+                <View
+                    style={{
+                        flexDirection: "row",
+                        justifyContent: "space-around",
+                    }}
+                >
+                    <View
+                        style={{
+                            justifyContent: "center",
+                            height: 100,
+                            marginTop: 50,
+                        }}
+                    >
+                        <AddCover onChangeCover={onChangeCover} cover={cover} />
                     </View>
-                    <View style={{ marginBottom: 20 }} />
                     <View>
-                        <Text style={addBookStyles.label}>Title</Text>
-                        <TextInput
-                            style={addBookStyles.input}
-                            onChangeText={onChangeTitle}
-                            value={title}
-                        />
+                        <View>
+                            <Text style={addBookStyles.label}>Author</Text>
+                            <TextInput
+                                style={addBookStyles.input}
+                                onChangeText={onChangeAuthor}
+                                value={author}
+                            />
+                        </View>
+                        <View style={{ marginBottom: 20 }} />
+                        <View>
+                            <Text style={addBookStyles.label}>Title</Text>
+                            <TextInput
+                                style={addBookStyles.input}
+                                onChangeText={onChangeTitle}
+                                value={title}
+                            />
+                        </View>
                     </View>
-                    <View style={{ marginBottom: 40 }} />
+                </View>
+                <View style={{ marginTop: 30 }}>
+                    <RNPickerSelect
+                        placeholder={{ label: "Choose book category..." }}
+                        onValueChange={onChangeCategory}
+                        style={{
+                            inputIOS: addBookStyles.inputSelect,
+                            placeholder: {
+                                color: colors.whiteText,
+                            },
+                        }}
+                        items={[
+                            { label: "Horror", value: "Horror" },
+                            { label: "Thriller", value: "Thriller" },
+                            { label: "Love", value: "Love" },
+                            {
+                                label: "Science Fiction",
+                                value: "Science Fiction",
+                            },
+                            { label: "Drama", value: "Drama" },
+                        ]}
+                    />
                 </View>
             </View>
-            <RNPickerSelect
-                placeholder={{ label: "Choose book category..." }}
-                onValueChange={onChangeCategory}
-                style={{
-                    inputIOS: addBookStyles.inputSelect,
-                    placeholder: {
-                        color: colors.buttonActive,
-                    },
-                }}
-                items={[
-                    { label: "Horror", value: "Horror" },
-                    { label: "Thriller", value: "Thriller" },
-                    { label: "Love", value: "Love" },
-                    { label: "Science Fiction", value: "Science Fiction" },
-                    { label: "Drama", value: "Drama" },
-                ]}
-            />
+            {/* 
             <MaterialIcons
                 name="arrow-drop-down"
                 size={30}
                 color={colors.buttonActive}
                 style={addBookStyles.selectIcon}
-            />
+            /> */}
         </View>
     );
 };

@@ -21,35 +21,35 @@ export const RateBook = ({ onChangeRate, rate }) => {
                 <TouchableWithoutFeedback onPress={() => onChangeRate(1)}>
                     <AntDesign
                         name="staro"
-                        size={30}
+                        size={40}
                         color={colors.whiteText}
                     />
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={() => onChangeRate(2)}>
                     <AntDesign
                         name="staro"
-                        size={30}
+                        size={40}
                         color={colors.whiteText}
                     />
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={() => onChangeRate(3)}>
                     <AntDesign
                         name="staro"
-                        size={30}
+                        size={40}
                         color={colors.whiteText}
                     />
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={() => onChangeRate(4)}>
                     <AntDesign
                         name="staro"
-                        size={30}
+                        size={40}
                         color={colors.whiteText}
                     />
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={() => onChangeRate(5)}>
                     <AntDesign
                         name="staro"
-                        size={30}
+                        size={40}
                         color={colors.whiteText}
                     />
                 </TouchableWithoutFeedback>
