@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { buttonStyle, colors } from "../constans/theme";
 import { menuStyles } from "../styles";
 import { MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
@@ -32,9 +32,7 @@ export const Menu = ({ navigation }) => {
                     source={require("../assets/logo.png")}
                 />
             </View>
-            <TouchableWithoutFeedback
-                onPress={() => navigation.navigate("Dashboard")}
-            >
+            <TouchableOpacity onPress={() => navigation.navigate("Dashboard")}>
                 <View style={menuStyles.itemSet}>
                     <MaterialCommunityIcons
                         name="view-dashboard"
@@ -52,8 +50,8 @@ export const Menu = ({ navigation }) => {
                         Dashboard
                     </Text>
                 </View>
-            </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback
+            </TouchableOpacity>
+            <TouchableOpacity
                 onPress={() => navigation.navigate("BooksCollection")}
             >
                 <View style={menuStyles.itemSet}>
@@ -66,18 +64,16 @@ export const Menu = ({ navigation }) => {
                         Books collection
                     </Text>
                 </View>
-            </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback
-                onPress={() => navigation.navigate("AddBook")}
-            >
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("AddBook")}>
                 <View style={menuStyles.itemSet}>
                     <Entypo name="add-to-list" size={24} color={getColor(2)} />
                     <Text style={[menuStyles.item, { color: getColor(2) }]}>
                         Add new book
                     </Text>
                 </View>
-            </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback>
+            </TouchableOpacity>
+            <TouchableOpacity>
                 <View style={menuStyles.itemSet}>
                     <MaterialCommunityIcons
                         name="filter-outline"
@@ -86,8 +82,8 @@ export const Menu = ({ navigation }) => {
                     />
                     <Text style={menuStyles.item}>Find book to read</Text>
                 </View>
-            </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback>
+            </TouchableOpacity>
+            <TouchableOpacity>
                 <View style={menuStyles.itemSet}>
                     <MaterialCommunityIcons
                         name="account"
@@ -96,7 +92,7 @@ export const Menu = ({ navigation }) => {
                     />
                     <Text style={menuStyles.item}>Account settings</Text>
                 </View>
-            </TouchableWithoutFeedback>
+            </TouchableOpacity>
             <View style={{ paddingTop: 30 }}>
                 <Button
                     buttonStyle={buttonStyle}

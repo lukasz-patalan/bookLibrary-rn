@@ -1,12 +1,11 @@
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { View, Text } from "react-native";
-import { colors } from "../constans/theme";
+import { colors, fontSize } from "../constans/theme";
 import { addBookStyles } from "../styles";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 export const RateBook = ({ onChangeRate, rate }) => {
-    console.log(rate);
     return (
         <View style={addBookStyles.rateView}>
             <Text
@@ -54,14 +53,9 @@ export const RateBook = ({ onChangeRate, rate }) => {
                     />
                 </TouchableWithoutFeedback>
             </View>
-            <Text
-                style={[
-                    addBookStyles.label,
-                    { alignSelf: "center", marginTop: 25 },
-                ]}
-            >
-                very good!
-            </Text>
+            <View style={addBookStyles.rateText}>
+                {rate && <Text style={addBookStyles.rateFont}>very good!</Text>}
+            </View>
         </View>
     );
 };

@@ -10,7 +10,7 @@ export const InputWrapper = () => {
             <Feather
                 name="search"
                 size={24}
-                color={colors.menuBackground}
+                color={colors.textGray}
                 style={searchInputStyles.icon}
             />
             <TextInput style={searchInputStyles.input} />

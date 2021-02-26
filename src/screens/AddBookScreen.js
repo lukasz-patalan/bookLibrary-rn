@@ -17,8 +17,10 @@ import {
     changeRate,
     changeStatus,
     changeTitle,
+    postNewBook,
 } from "../actions/addBook";
 import { buttonStyle, colors } from "../constans/theme";
+import { ScrollView } from "react-native-gesture-handler";
 
 const AddBookScreen = ({
     navigation,
@@ -34,16 +36,30 @@ const AddBookScreen = ({
     category,
     rate,
     status,
+    onSendNewBook,
+    isSendingBook,
 }) => {
     const toggleDrawer = () => navigation.toggleDrawer();
     const isDisabled = !author || !title || !category || !rate || !status;
+
+    const handleSendNewBook = () => {
+        onSendNewBook(
+            author,
+            title,
+            cover,
+            category,
+            rate,
+            status,
+            navigation.navigate("BooksCollection")
+        );
+    };
 
     return (
         <View style={dashboardStyles.dashboardContainer}>
             <ScreenTitle title="Add new book" />
             <Header toggleDrawer={toggleDrawer} />
 
-            <View style={addBookStyles.contentWrapper}>
+            <ScrollView style={addBookStyles.contentWrapper}>
                 <AddbookFirstSection
                     onChangeAuthor={onChangeAuthor}
                     onChangeTitle={onChangeTitle}
@@ -52,31 +68,9 @@ const AddBookScreen = ({
                     author={author}
                     title={title}
                     cover={cover}
-                    category={category}
                 />
-                <View
-                    style={{
-                        backgroundColor: colors.insideBg,
-                        marginHorizontal: 20,
-                        borderRadius: 20,
-                        marginTop: 10,
-                        paddingTop: 65,
-                    }}
-                >
-                    <View
-                        style={{
-                            position: "absolute",
-                            backgroundColor: colors.darkRed,
-                            paddingVertical: 6,
-                            paddingHorizontal: 6,
-                            borderRadius: 50,
-                            top: 15,
-                            left: 15,
-                            zIndex: 1,
-                            justifyContent: "center",
-                            alignItems: "center",
-                        }}
-                    >
+                <View style={addBookStyles.secondSectionWrapper}>
+                    <View style={addBookStyles.heartIconWrapper}>
                         <AntDesign
                             name="heart"
                             size={22}
@@ -96,13 +90,17 @@ const AddBookScreen = ({
                     }}
                 >
                     <Button
+                        onPress={handleSendNewBook}
                         title="Save book"
+                        loading={isSendingBook}
                         buttonStyle={buttonStyle}
                         disabled={isDisabled}
-                        disabledStyle={{ backgroundColor: colors.textGray }}
+                        disabledStyle={{
+                            backgroundColor: colors.violetView,
+                        }}
                     />
                 </View>
-            </View>
+            </ScrollView>
         </View>
     );
 };
@@ -112,9 +110,10 @@ function mapStateToProps(state) {
         author: state.addBook.author,
         title: state.addBook.title,
         cover: state.addBook.cover,
-        category: state.addBook.cover,
+        category: state.addBook.category,
         rate: state.addBook.rate,
         status: state.addBook.status,
+        isSendingBook: state.addBook.isSendingBook,
     };
 }
 
@@ -126,6 +125,26 @@ function mapDispatchToProps(dispatch) {
         onChangeCategory: (category) => dispatch(changeCategory(category)),
         onChangeRate: (rate) => dispatch(changeRate(rate)),
         onChangeStatus: (status) => dispatch(changeStatus(status)),
+        onSendNewBook: (
+            author,
+            title,
+            cover,
+            category,
+            rate,
+            status,
+            goToBooksCollection
+        ) =>
+            dispatch(
+                postNewBook(
+                    author,
+                    title,
+                    cover,
+                    category,
+                    rate,
+                    status,
+                    goToBooksCollection
+                )
+            ),
     };
 }
 

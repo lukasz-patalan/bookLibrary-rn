@@ -13,7 +13,7 @@ export const signinStyles = StyleSheet.create({
     formWrapper: {
         marginTop: 40,
         paddingTop: 50,
-        backgroundColor: colors.menuBackground,
+        backgroundColor: colors.background,
         borderTopLeftRadius: 80,
         paddingBottom: 180,
     },
@@ -22,13 +22,25 @@ export const signinStyles = StyleSheet.create({
         marginTop: 30,
         marginBottom: 120,
     },
+    switchWrapper: {
+        alignSelf: "flex-start",
+        flexDirection: "row",
+        alignItems: "center",
+        marginLeft: 40,
+        marginTop: 25,
+    },
+    rememberMeWrapper: {
+        fontSize: fontSize.regular,
+        marginLeft: 10,
+        color: colors.whiteText,
+    },
 });
 
 export const SignupStyles = StyleSheet.create({
     formWrapper: {
         marginTop: 40,
         paddingTop: 100,
-        backgroundColor: colors.menuBackground,
+        backgroundColor: colors.background,
         borderTopLeftRadius: 80,
         paddingBottom: 180,
     },
@@ -47,7 +59,7 @@ export const SignupStyles = StyleSheet.create({
         marginLeft: 40,
     },
     input: {
-        backgroundColor: colors.insideBg,
+        backgroundColor: colors.darkViolet,
         height: 60,
         width: 340,
         borderRadius: 8,
@@ -99,7 +111,7 @@ export const headerStyles = StyleSheet.create({
 export const menuStyles = StyleSheet.create({
     container: {
         paddingLeft: 40,
-        backgroundColor: colors.menuBackground,
+        backgroundColor: colors.background,
         flex: 1,
     },
     itemSet: {
@@ -135,7 +147,7 @@ export const elements = StyleSheet.create({
 
 export const searchInputStyles = StyleSheet.create({
     container: {
-        backgroundColor: colors.menuBackground,
+        backgroundColor: colors.darkViolet,
         height: 180,
         justifyContent: "center",
         paddingTop: 100,
@@ -160,16 +172,69 @@ export const searchInputStyles = StyleSheet.create({
 
 export const addBookStyles = StyleSheet.create({
     contentWrapper: {
-        marginTop: 110,
-        // borderTopLeftRadius: 80,
-        // paddingTop: 50,
-        // backgroundColor: colors.menuBackground,
+        marginTop: 120,
+    },
+    rateText: {
+        fontSize: fontSize.regular,
+        marginBottom: 10,
+        alignSelf: "center",
+        marginTop: 15,
+        backgroundColor: colors.textGray,
+        width: 150,
+        alignItems: "center",
+        paddingVertical: 8,
+        borderRadius: 8,
+        height: 35,
+    },
+    rateFont: {
+        fontSize: fontSize.regular,
+        color: colors.whiteText,
+        fontStyle: "italic",
+    },
+    firstSectionWrapper: {
+        position: "absolute",
+        backgroundColor: colors.buttonActive,
+        paddingVertical: 5,
+        paddingHorizontal: 8,
+        borderRadius: 50,
+        top: 15,
+        left: 15,
+        zIndex: 1,
+    },
+    insideFirstSection: {
+        flexDirection: "row",
+        justifyContent: "space-around",
+    },
+    coverWrapper: {
+        justifyContent: "center",
+        height: 100,
+        marginTop: 50,
+    },
+    secondSectionWrapper: {
+        backgroundColor: colors.darkViolet,
+        marginHorizontal: 20,
+        borderRadius: 20,
+        marginTop: 10,
+        paddingTop: 65,
+    },
+    heartIconWrapper: {
+        position: "absolute",
+        backgroundColor: colors.darkRed,
+        paddingTop: 7,
+        paddingBottom: 6,
+        paddingHorizontal: 6,
+        borderRadius: 50,
+        top: 15,
+        left: 15,
+        zIndex: 1,
+        justifyContent: "center",
+        alignItems: "center",
     },
     container: {
         flexDirection: "column",
         justifyContent: "space-around",
         marginBottom: 10,
-        backgroundColor: colors.insideBg,
+        backgroundColor: colors.darkViolet,
         paddingVertical: 20,
         marginHorizontal: 20,
         borderRadius: 20,
@@ -180,6 +245,11 @@ export const addBookStyles = StyleSheet.create({
         height: 100,
         alignItems: "center",
         justifyContent: "center",
+        borderWidth: 2,
+        borderStyle: "dashed",
+        paddingBottom: 5,
+        borderColor: colors.violetView,
+        marginLeft: 2,
     },
     photoIcon: {
         color: colors.violetView,
@@ -212,8 +282,8 @@ export const addBookStyles = StyleSheet.create({
         fontSize: fontSize.regular,
         zIndex: 1,
         alignSelf: "center",
-        textAlign: "center",
         marginBottom: 10,
+        paddingLeft: 20,
     },
     rateView: {
         backgroundColor: colors.violetView,
@@ -241,12 +311,9 @@ export const addBookStyles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-    rateText: {
-        color: colors.whiteText,
-        marginTop: 7,
-    },
+
     coverImageView: {
-        backgroundColor: colors.menuBackground,
+        backgroundColor: colors.textGray,
         height: 40,
         width: 40,
         borderRadius: 50,

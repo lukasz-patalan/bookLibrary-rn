@@ -44,7 +44,7 @@ export const SignupForm = ({
                         value={name}
                         onChangeText={onChangeName}
                         style={SignupStyles.input}
-                        placeholderTextColor={colors.buttonActive}
+                        placeholderTextColor={colors.textGray}
                     />
                 </View>
                 <View style={SignupStyles.inputContainer}>
@@ -60,7 +60,7 @@ export const SignupForm = ({
                         value={email}
                         onChangeText={onChangeEmail}
                         style={SignupStyles.input}
-                        placeholderTextColor={colors.buttonActive}
+                        placeholderTextColor={colors.textGray}
                         autoCapitalize="none"
                     />
                 </View>
@@ -77,7 +77,7 @@ export const SignupForm = ({
                         value={password}
                         onChangeText={onChangePassword}
                         style={SignupStyles.input}
-                        placeholderTextColor={colors.buttonActive}
+                        placeholderTextColor={colors.textGray}
                         autoCapitalize="none"
                         secureTextEntry={true}
                     />

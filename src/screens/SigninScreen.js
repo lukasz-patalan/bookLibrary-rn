@@ -26,11 +26,10 @@ const SigninScreen = ({
     return (
         <View
             style={{
-                backgroundColor: colors.insideBg,
+                backgroundColor: colors.darkViolet,
                 flex: 1,
             }}
         >
-            {/* <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}> */}
             <SigninForm
                 onChangeEmail={onChangeEmail}
                 onChangePassword={onChangePassword}
@@ -42,7 +41,6 @@ const SigninScreen = ({
                 isSwitchRememberMeEnabled={isSwitchRememberMeEnabled}
                 onToggleRemeberMeSwitch={onToggleRemeberMeSwitch}
             />
-            {/* </TouchableWithoutFeedback> */}
         </View>
     );
 };

@@ -43,7 +43,7 @@ export const SigninForm = ({
                 <MaterialIcons
                     name="account-circle"
                     size={70}
-                    color={colors.insideBg}
+                    color={colors.darkViolet}
                     style={{ alignSelf: "center", marginBottom: 10 }}
                 />
                 <View style={SignupStyles.inputContainer}></View>
@@ -81,35 +81,21 @@ export const SigninForm = ({
                         autoCapitalize="none"
                         secureTextEntry={true}
                     />
-                    <View
-                        style={{
-                            alignSelf: "flex-start",
-                            marginLeft: 35,
-                            marginTop: 25,
-                            flexDirection: "row",
-                            alignItems: "center",
-                        }}
-                    >
+                    <View style={signinStyles.switchWrapper}>
                         <Switch
                             value={isSwitchRememberMeEnabled}
                             onValueChange={onToggleRemeberMeSwitch}
                             trackColor={{
-                                false: colors.insideBg,
+                                false: colors.darkViolet,
                                 true: colors.buttonActive,
                             }}
                             thumbColor={
                                 isSwitchRememberMeEnabled
-                                    ? colors.insideBg
+                                    ? colors.darkViolet
                                     : colors.buttonActive
                             }
                         />
-                        <Text
-                            style={{
-                                color: colors.buttonActive,
-                                fontSize: fontSize.small,
-                                marginLeft: 10,
-                            }}
-                        >
+                        <Text style={signinStyles.rememberMeWrapper}>
                             Remeber me?
                         </Text>
                     </View>

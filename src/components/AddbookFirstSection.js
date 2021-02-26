@@ -1,11 +1,12 @@
 import React from "react";
 import { View, Text, TextInput } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
-import { MaterialIcons, Foundation } from "@expo/vector-icons";
+import { MaterialIcons, Foundation, Entypo } from "@expo/vector-icons";
 
 import { colors } from "../constans/theme";
 import { addBookStyles } from "../styles";
 import AddCover from "./AddCover";
+import { add } from "react-native-reanimated";
 
 export const AddbookFirstSection = ({
     onChangeAuthor,
@@ -15,43 +16,19 @@ export const AddbookFirstSection = ({
     author,
     title,
     cover,
-    category,
 }) => {
-    console.log(category);
     return (
         <View>
             <View style={addBookStyles.container}>
-                <View
-                    style={{
-                        position: "absolute",
-                        backgroundColor: colors.buttonActive,
-                        paddingVertical: 5,
-                        paddingHorizontal: 8,
-                        borderRadius: 50,
-                        top: 15,
-                        left: 15,
-                        zIndex: 1,
-                    }}
-                >
+                <View style={addBookStyles.firstSectionWrapper}>
                     <Foundation
                         name="pencil"
                         size={24}
                         color={colors.whiteText}
                     />
                 </View>
-                <View
-                    style={{
-                        flexDirection: "row",
-                        justifyContent: "space-around",
-                    }}
-                >
-                    <View
-                        style={{
-                            justifyContent: "center",
-                            height: 100,
-                            marginTop: 50,
-                        }}
-                    >
+                <View style={addBookStyles.insideFirstSection}>
+                    <View style={addBookStyles.coverWrapper}>
                         <AddCover onChangeCover={onChangeCover} cover={cover} />
                     </View>
                     <View>
@@ -95,15 +72,14 @@ export const AddbookFirstSection = ({
                             { label: "Drama", value: "Drama" },
                         ]}
                     />
+                    <Entypo
+                        name="select-arrows"
+                        size={15}
+                        color={colors.whiteText}
+                        style={{ position: "absolute", right: 90, top: 16 }}
+                    />
                 </View>
             </View>
-            {/* 
-            <MaterialIcons
-                name="arrow-drop-down"
-                size={30}
-                color={colors.buttonActive}
-                style={addBookStyles.selectIcon}
-            /> */}
         </View>
     );
 };

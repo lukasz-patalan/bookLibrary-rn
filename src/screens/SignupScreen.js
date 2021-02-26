@@ -26,11 +26,10 @@ const SignupScreen = ({
     return (
         <View
             style={{
-                backgroundColor: colors.insideBg,
+                backgroundColor: colors.darkViolet,
                 flex: 1,
             }}
         >
-            {/* <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}> */}
             <SignupForm
                 onChangeName={onChangeName}
                 onChangeEmail={onChangeEmail}
@@ -42,7 +41,6 @@ const SignupScreen = ({
                 navigation={navigation}
                 isLoading={isLoading}
             />
-            {/* </TouchableWithoutFeedback> */}
         </View>
     );
 };

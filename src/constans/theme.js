@@ -1,11 +1,11 @@
 export const colors = {
     background: "#1f2630",
     menuBackground: "#1f2630",
-    insideBg: "#0f2029",
+    darkViolet: "#0f2029",
     buttonActive: "#dab111",
     icons: "white",
     whiteText: "#fffcfa",
-    textGray: "#45494e",
+    textGray: "#555664",
     markedGreen: "#88974E",
     redView: "#b37673",
     darkRed: "#ba534d",
@@ -24,7 +24,7 @@ export const buttonStyle = {
     width: 200,
     height: 50,
     backgroundColor: colors.buttonActive,
-    borderRadius: 10,
+    borderRadius: 50,
     alignItems: "center",
     justifyContent: "center",
 };

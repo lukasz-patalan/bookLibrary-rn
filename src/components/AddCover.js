@@ -50,15 +50,17 @@ export default function AddCover({ onChangeCover, cover }) {
                         source={{ uri: cover }}
                         style={{
                             width: 100,
-                            height: 150,
+                            height: 100,
                             borderRadius: 5,
+                            marginLeft: 5,
+                            marginTop: 15,
                         }}
                     />
                     <View style={addBookStyles.coverImageView}>
                         <MaterialIcons
                             name="zoom-out-map"
                             size={24}
-                            color={colors.buttonActive}
+                            color={colors.whiteText}
                         />
                     </View>
                 </View>

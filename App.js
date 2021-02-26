@@ -6,7 +6,7 @@ import { DashboardScreen } from "./src/screens/DashboardScreen";
 import { Provider } from "react-redux";
 import configureStore from "./src/store";
 
-import { BooksCollectionScreen } from "./src/screens/BooksCollectionScreen";
+import BooksCollectionScreen from "./src/screens/BooksCollectionScreen";
 import { Menu } from "./src/components/Menu";
 import AddBookScreen from "./src/screens/AddBookScreen";
 import SignupScreen from "./src/screens/SignupScreen";
