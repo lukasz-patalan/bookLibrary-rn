@@ -76,7 +76,7 @@ export const AddbookFirstSection = ({
                 </View>
                 <View style={{ marginTop: 30 }}>
                     <RNPickerSelect
-                        placeholder={{ label: "Choose book category..." }}
+                        placeholder={{ label: "Choose book category" }}
                         onValueChange={onChangeCategory}
                         style={{
                             inputIOS: addBookStyles.inputSelect,

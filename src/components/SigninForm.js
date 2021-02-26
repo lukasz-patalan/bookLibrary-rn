@@ -43,7 +43,7 @@ export const SigninForm = ({
                 <MaterialIcons
                     name="account-circle"
                     size={70}
-                    color={colors.background}
+                    color={colors.insideBg}
                     style={{ alignSelf: "center", marginBottom: 10 }}
                 />
                 <View style={SignupStyles.inputContainer}></View>
@@ -93,10 +93,13 @@ export const SigninForm = ({
                         <Switch
                             value={isSwitchRememberMeEnabled}
                             onValueChange={onToggleRemeberMeSwitch}
-                            trackColor={{ true: colors.buttonActive }}
+                            trackColor={{
+                                false: colors.insideBg,
+                                true: colors.buttonActive,
+                            }}
                             thumbColor={
                                 isSwitchRememberMeEnabled
-                                    ? colors.background
+                                    ? colors.insideBg
                                     : colors.buttonActive
                             }
                         />

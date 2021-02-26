@@ -4,7 +4,10 @@ import { Ionicons, FontAwesome5, AntDesign } from "@expo/vector-icons";
 
 import { colors } from "../constans/theme";
 import { addBookStyles } from "../styles";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import {
+    TouchableOpacity,
+    TouchableWithoutFeedback,
+} from "react-native-gesture-handler";
 
 export const AddBookStatus = ({ onChangeStatus, status }) => {
     const isReadingStatus = status === "Reading";
@@ -18,7 +21,7 @@ export const AddBookStatus = ({ onChangeStatus, status }) => {
     return (
         <View style={{ marginTop: 20, marginBottom: 20 }}>
             <View style={addBookStyles.statusView}>
-                <TouchableWithoutFeedback
+                <TouchableOpacity
                     style={addBookStyles.statusContainer}
                     onPress={setReadStatus}
                 >
@@ -38,9 +41,9 @@ export const AddBookStatus = ({ onChangeStatus, status }) => {
                     >
                         Read
                     </Text>
-                </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback
-                    style={addBookStyles.starsWrapper}
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={addBookStyles.statusContainer}
                     onPress={setReadingStatus}
                 >
                     <FontAwesome5
@@ -61,7 +64,7 @@ export const AddBookStatus = ({ onChangeStatus, status }) => {
                     >
                         Reading
                     </Text>
-                </TouchableWithoutFeedback>
+                </TouchableOpacity>
             </View>
         </View>
     );

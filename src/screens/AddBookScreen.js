@@ -91,7 +91,7 @@ const AddBookScreen = ({
                 </View>
                 <View
                     style={{
-                        marginTop: 15,
+                        marginTop: 40,
                         alignSelf: "center",
                     }}
                 >

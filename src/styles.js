@@ -47,7 +47,7 @@ export const SignupStyles = StyleSheet.create({
         marginLeft: 40,
     },
     input: {
-        backgroundColor: colors.background,
+        backgroundColor: colors.insideBg,
         height: 60,
         width: 340,
         borderRadius: 8,
@@ -57,7 +57,7 @@ export const SignupStyles = StyleSheet.create({
     },
     buttonWrapper: {
         alignItems: "center",
-        marginTop: 86,
+        marginTop: 56,
         marginBottom: 120,
     },
     icon: {
@@ -160,7 +160,7 @@ export const searchInputStyles = StyleSheet.create({
 
 export const addBookStyles = StyleSheet.create({
     contentWrapper: {
-        marginTop: 130,
+        marginTop: 110,
         // borderTopLeftRadius: 80,
         // paddingTop: 50,
         // backgroundColor: colors.menuBackground,
@@ -206,13 +206,13 @@ export const addBookStyles = StyleSheet.create({
     inputSelect: {
         color: colors.whiteText,
         borderRadius: 10,
-        paddingLeft: 15,
         height: 48,
         width: 220,
         backgroundColor: colors.redView,
         fontSize: fontSize.regular,
         zIndex: 1,
         alignSelf: "center",
+        textAlign: "center",
         marginBottom: 10,
     },
     rateView: {
@@ -234,17 +234,9 @@ export const addBookStyles = StyleSheet.create({
         paddingHorizontal: 80,
     },
     statusContainer: {
-        height: 100,
-        width: 100,
-        borderRadius: 50,
-        backgroundColor: colors.violetView,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    starsWrapper: {
-        height: 100,
-        width: 100,
-        borderRadius: 50,
+        height: 80,
+        width: 80,
+        borderRadius: 20,
         backgroundColor: colors.violetView,
         justifyContent: "center",
         alignItems: "center",

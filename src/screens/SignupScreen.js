@@ -26,7 +26,7 @@ const SignupScreen = ({
     return (
         <View
             style={{
-                backgroundColor: colors.background,
+                backgroundColor: colors.insideBg,
                 flex: 1,
             }}
         >

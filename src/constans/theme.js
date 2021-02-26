@@ -1,6 +1,6 @@
 export const colors = {
-    background: "#2b3038",
-    menuBackground: "#324047",
+    background: "#1f2630",
+    menuBackground: "#1f2630",
     insideBg: "#0f2029",
     buttonActive: "#dab111",
     icons: "white",
