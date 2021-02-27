@@ -323,3 +323,99 @@ export const addBookStyles = StyleSheet.create({
         marginLeft: 70,
     },
 });
+
+export const booksCollection = StyleSheet.create({
+    pageContainer: {
+        width: "100%",
+        height: "100%",
+        backgroundColor: colors.violetView,
+    },
+    bookView: {
+        flexDirection: "row",
+        marginBottom: 20,
+        alignSelf: "center",
+        paddingBottom: 15,
+    },
+    cover: {
+        width: 140,
+        height: 190,
+        borderRadius: 8,
+        marginRight: 10,
+    },
+    detailsView: {
+        backgroundColor: colors.background,
+        borderRadius: 8,
+        height: 190,
+        zIndex: -1,
+    },
+    kebabIcon: {
+        alignSelf: "flex-end",
+        marginRight: 15,
+        marginTop: 10,
+        zIndex: 1,
+    },
+    sectionWrrapper: {
+        flexDirection: "row",
+        marginTop: 10,
+        height: 40,
+        justifyContent: "space-between",
+        marginHorizontal: 10,
+        alignItems: "center",
+    },
+    categoryWrapper: {
+        backgroundColor: colors.violetView,
+        flexDirection: "row",
+        paddingVertical: 10,
+        paddingHorizontal: 15,
+        borderRadius: 8,
+    },
+    titleWrapper: {
+        width: 200,
+        flexDirection: "row",
+        alignItems: "center",
+        paddingLeft: 15,
+        height: 60,
+        zIndex: 0,
+        marginTop: -10,
+    },
+    titleText: {
+        fontSize: fontSize.small,
+        color: colors.whiteText,
+        fontStyle: "italic",
+    },
+    itemWrapper: {
+        width: 200,
+        flexDirection: "row",
+        paddingVertical: 10,
+        alignItems: "center",
+        paddingLeft: 15,
+    },
+    icon: {
+        marginRight: 10,
+    },
+    statusWrapper: {
+        flexDirection: "row",
+        alignItems: "center",
+        textAlign: "right",
+        marginRight: 10,
+    },
+    itemText: {
+        fontSize: fontSize.small,
+        color: colors.whiteText,
+    },
+    starIcon: {
+        position: "absolute",
+        right: -10,
+        top: 150,
+        zIndex: 1,
+    },
+    starText: {
+        position: "absolute",
+        top: 168,
+        right: 11,
+        fontSize: fontSize.Xlarge,
+        color: colors.darkRed,
+        zIndex: 2,
+        fontWeight: "bold",
+    },
+});

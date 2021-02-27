@@ -1,9 +1,15 @@
 import React from "react";
 import { View, Text, ActivityIndicator, SafeAreaView } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
+import { colors } from "../constans/theme";
 import { Book } from "./Book";
 
-export const BooksList = ({ isFetchingBooks, books }) => {
+export const BooksList = ({
+    isFetchingBooks,
+    books,
+    handleOpenBookMenu,
+    isBookMenuOpen,
+}) => {
     const renderItem = ({ item }) => {
         return (
             <Book
@@ -13,21 +19,36 @@ export const BooksList = ({ isFetchingBooks, books }) => {
                 category={item.category}
                 rate={item.rate}
                 status={item.status}
+                key={item.title}
+                handleOpenBookMenu={handleOpenBookMenu}
             />
         );
     };
     return (
-        <View style={{ marginTop: 20 }}>
+        <View
+            style={{
+                marginTop: 10,
+                flex: 1,
+            }}
+        >
             {isFetchingBooks ? (
                 <ActivityIndicator size="large" />
             ) : (
-                <SafeAreaView>
-                    <FlatList
-                        data={books}
-                        renderItem={renderItem}
-                        keyExtractor={(item) => item.name}
-                    />
-                </SafeAreaView>
+                <FlatList
+                    data={books}
+                    renderItem={renderItem}
+                    keyExtractor={(item) => item.title}
+                />
+            )}
+            {isBookMenuOpen && (
+                <View
+                    style={{
+                        width: "100%",
+                        height: 300,
+                        backgroundColor: colors.textGray,
+                        borderRadius: 10,
+                    }}
+                />
             )}
         </View>
     );

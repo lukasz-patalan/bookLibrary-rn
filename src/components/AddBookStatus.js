@@ -1,13 +1,10 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { Ionicons, FontAwesome5, AntDesign } from "@expo/vector-icons";
+import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 
 import { colors } from "../constans/theme";
 import { addBookStyles } from "../styles";
-import {
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-} from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export const AddBookStatus = ({ onChangeStatus, status }) => {
     const isReadingStatus = status === "Reading";

@@ -65,6 +65,8 @@ export const AddbookFirstSection = ({
                             { label: "Horror", value: "Horror" },
                             { label: "Thriller", value: "Thriller" },
                             { label: "Love", value: "Love" },
+                            { label: "Weird Fiction", value: "Weird fiction" },
+
                             {
                                 label: "Science Fiction",
                                 value: "Science Fiction",

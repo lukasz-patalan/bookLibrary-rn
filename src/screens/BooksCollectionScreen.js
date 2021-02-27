@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text } from "react-native";
-import { dashboardStyles } from "../styles";
+import { booksCollection, dashboardStyles } from "../styles";
 
 import { Header } from "../components/Header";
 import { InputWrapper } from "../components/InputWrapper";
@@ -19,13 +19,30 @@ const BooksCollectionScreen = ({
 
     useEffect(() => {
         fetchBooks();
+
+        const listener = navigation.addListener("didFocus", () => {
+            fetchBooks();
+        });
+        return () => {
+            listener.remove();
+        };
     }, []);
+    const [isBookMenuOpen, setBookMenuOpen] = useState(false);
+
+    const handleOpenBookMenu = () => {
+        setBookMenuOpen(true);
+    };
     return (
-        <View style={dashboardStyles.dashboardContainer}>
+        <View style={booksCollection.pageContainer}>
             <ScreenTitle title="Books collection" />
             <Header toggleDrawer={toggleDrawer} />
             <InputWrapper />
-            <BooksList books={books} isFetchingBooks={isFetchingBooks} />
+            <BooksList
+                books={books}
+                isFetchingBooks={isFetchingBooks}
+                handleOpenBookMenu={handleOpenBookMenu}
+                isBookMenuOpen={isBookMenuOpen}
+            />
         </View>
     );
 };

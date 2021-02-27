@@ -43,13 +43,7 @@ const AddBookScreen = ({
     const isDisabled = !author || !title || !category || !rate || !status;
 
     const handleSendNewBook = () => {
-        onSendNewBook(
-            author,
-            title,
-            cover,
-            category,
-            rate,
-            status,
+        onSendNewBook(author, title, cover, category, rate, status, () =>
             navigation.navigate("BooksCollection")
         );
     };
