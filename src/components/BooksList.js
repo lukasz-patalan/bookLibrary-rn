@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, ActivityIndicator, SafeAreaView } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { colors } from "../constans/theme";
 import { Book } from "./Book";
+import { SideBookMenu } from "./SideBookMenu";
 
 export const BooksList = ({
     isFetchingBooks,
     books,
     handleOpenBookMenu,
     isBookMenuOpen,
+    toggleMenu,
+    bookSelected,
+    handleCloseBookMenu,
+    removeBook,
+    bookId,
 }) => {
     const renderItem = ({ item }) => {
         return (
@@ -21,9 +27,12 @@ export const BooksList = ({
                 status={item.status}
                 key={item.title}
                 handleOpenBookMenu={handleOpenBookMenu}
+                toggleMenu={toggleMenu}
+                id={item.id}
             />
         );
     };
+
     return (
         <View
             style={{
@@ -41,13 +50,11 @@ export const BooksList = ({
                 />
             )}
             {isBookMenuOpen && (
-                <View
-                    style={{
-                        width: "100%",
-                        height: 300,
-                        backgroundColor: colors.textGray,
-                        borderRadius: 10,
-                    }}
+                <SideBookMenu
+                    bookSelected={bookSelected}
+                    handleCloseBookMenu={handleCloseBookMenu}
+                    removeBook={removeBook}
+                    bookId={bookId}
                 />
             )}
         </View>

@@ -341,6 +341,7 @@ export const booksCollection = StyleSheet.create({
         height: 190,
         borderRadius: 8,
         marginRight: 10,
+        backgroundColor: colors.menuBackground,
     },
     detailsView: {
         backgroundColor: colors.background,
@@ -354,20 +355,14 @@ export const booksCollection = StyleSheet.create({
         marginTop: 10,
         zIndex: 1,
     },
-    sectionWrrapper: {
-        flexDirection: "row",
-        marginTop: 10,
-        height: 40,
-        justifyContent: "space-between",
-        marginHorizontal: 10,
-        alignItems: "center",
-    },
     categoryWrapper: {
         backgroundColor: colors.violetView,
         flexDirection: "row",
         paddingVertical: 10,
         paddingHorizontal: 15,
         borderRadius: 8,
+        marginLeft: 15,
+        width: 150,
     },
     titleWrapper: {
         width: 200,
@@ -376,7 +371,7 @@ export const booksCollection = StyleSheet.create({
         paddingLeft: 15,
         height: 60,
         zIndex: 0,
-        marginTop: -10,
+        marginTop: -25,
     },
     titleText: {
         fontSize: fontSize.small,
@@ -386,7 +381,7 @@ export const booksCollection = StyleSheet.create({
     itemWrapper: {
         width: 200,
         flexDirection: "row",
-        paddingVertical: 10,
+        paddingBottom: 15,
         alignItems: "center",
         paddingLeft: 15,
     },
@@ -396,8 +391,9 @@ export const booksCollection = StyleSheet.create({
     statusWrapper: {
         flexDirection: "row",
         alignItems: "center",
-        textAlign: "right",
-        marginRight: 10,
+        alignSelf: "flex-end",
+        marginRight: 15,
+        marginTop: 15,
     },
     itemText: {
         fontSize: fontSize.small,
@@ -417,5 +413,81 @@ export const booksCollection = StyleSheet.create({
         color: colors.darkRed,
         zIndex: 2,
         fontWeight: "bold",
+    },
+});
+
+export const emptyCollectionStyles = StyleSheet.create({
+    wrapper: {
+        alignSelf: "center",
+        paddingTop: 100,
+        alignItems: "center",
+    },
+    noBookText: {
+        fontSize: 20,
+        marginTop: 15,
+        color: colors.darkViolet,
+    },
+    goAddWrapper: {
+        flexDirection: "row",
+        marginTop: 20,
+    },
+    goAddText: {
+        color: colors.buttonActive,
+        fontSize: fontSize.regular,
+    },
+});
+
+export const sideBookMenuStyles = StyleSheet.create({
+    wrapper: {
+        width: "100%",
+        height: 200,
+        backgroundColor: colors.darkViolet,
+        borderRadius: 10,
+        paddingTop: 15,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 4,
+            height: -5,
+        },
+        shadowOpacity: 0.6,
+        shadowRadius: 6.27,
+
+        elevation: 10,
+    },
+    closeWrapper: {
+        alignSelf: "flex-end",
+        marginRight: 20,
+    },
+    titleWrapper: {
+        color: colors.whiteText,
+        fontSize: fontSize.large,
+        alignSelf: "center",
+        fontStyle: "italic",
+    },
+    menuItemsWrapper: {
+        flexDirection: "row",
+        justifyContent: "center",
+        marginTop: 40,
+    },
+    editWrapper: {
+        flexDirection: "row",
+        alignItems: "center",
+        alignSelf: "flex-start",
+    },
+    editText: {
+        color: colors.buttonActive,
+        fontSize: fontSize.regular,
+        marginLeft: 5,
+    },
+    deleteWrapper: {
+        flexDirection: "row",
+        alignItems: "center",
+        alignSelf: "flex-start",
+        marginLeft: 80,
+    },
+    deleteText: {
+        color: colors.buttonActive,
+        fontSize: fontSize.regular,
+        marginLeft: 5,
     },
 });
