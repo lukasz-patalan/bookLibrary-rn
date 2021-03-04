@@ -1,6 +1,7 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { combineReducers } from "redux";
+import reactotron from "../ReactotronConfig";
 
 import { signup } from "./reducers/signup";
 import { signin } from "./reducers/signin";
@@ -15,7 +16,10 @@ const rootReducer = combineReducers({
 });
 
 function configureStore() {
-    return createStore(rootReducer, applyMiddleware(thunk));
+    return createStore(
+        rootReducer,
+        compose(applyMiddleware(thunk), reactotron.createEnhancer())
+    );
 }
 
 export default configureStore;

@@ -1,10 +1,16 @@
 import React from "react";
+if (__DEV__) {
+    import("./ReactotronConfig").then(() =>
+        console.log("Reactotron Configured")
+    );
+}
 
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createDrawerNavigator } from "react-navigation-drawer";
 import { DashboardScreen } from "./src/screens/DashboardScreen";
 import { Provider } from "react-redux";
 import configureStore from "./src/store";
+import Reactotron from "reactotron-react-native";
 
 import BooksCollectionScreen from "./src/screens/BooksCollectionScreen";
 import { Menu } from "./src/components/Menu";
