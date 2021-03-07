@@ -3,13 +3,13 @@ import { View } from "react-native";
 import { Button } from "react-native-elements";
 import { addBookStyles, dashboardStyles } from "../styles";
 import { AntDesign } from "@expo/vector-icons";
+import { connect } from "react-redux";
 
 import { Header } from "../components/Header";
 import { ScreenTitle } from "../components/ScreenTitle";
 import { RateBook } from "../components/RateBook";
 import { AddbookFirstSection } from "../components/AddbookFirstSection";
 import { AddBookStatus } from "../components/AddBookStatus";
-import { connect } from "react-redux";
 import {
     changeAuthor,
     changeCategory,
@@ -62,6 +62,7 @@ const AddBookScreen = ({
                     author={author}
                     title={title}
                     cover={cover}
+                    category={category}
                 />
                 <View style={addBookStyles.secondSectionWrapper}>
                     <View style={addBookStyles.heartIconWrapper}>

@@ -16,6 +16,7 @@ export const AddbookFirstSection = ({
     author,
     title,
     cover,
+    category,
 }) => {
     return (
         <View>
@@ -54,6 +55,7 @@ export const AddbookFirstSection = ({
                 <View style={{ marginTop: 30 }}>
                     <RNPickerSelect
                         placeholder={{ label: "Choose book category" }}
+                        value={category}
                         onValueChange={onChangeCategory}
                         style={{
                             inputIOS: addBookStyles.inputSelect,

@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { View, Text } from "react-native";
-import { booksCollection, dashboardStyles } from "../styles";
+import { View } from "react-native";
+import { booksCollection } from "../styles";
 
 import { Header } from "../components/Header";
-import { InputWrapper } from "../components/InputWrapper";
+import { Search } from "../components/Search";
 import { ScreenTitle } from "../components/ScreenTitle";
 import { connect } from "react-redux";
 import {
     deleteBook,
     getBooksCollection,
+    returnToBooks,
+    searchBook,
     toggleSideMenu,
 } from "../actions/booksCollection";
 import { BooksList } from "../components/BooksList";
 import { EmptyCollection } from "../components/EmptyCollection";
-
 const BooksCollectionScreen = ({
     navigation,
     fetchBooks,
@@ -23,6 +24,11 @@ const BooksCollectionScreen = ({
     bookSelected,
     removeBook,
     bookId,
+    filteredBooks,
+    isSearching,
+    searchInBooks,
+    backToCollection,
+    searchValue,
 }) => {
     const toggleDrawer = () => navigation.toggleDrawer();
 
@@ -49,10 +55,15 @@ const BooksCollectionScreen = ({
         <View style={booksCollection.pageContainer}>
             <ScreenTitle title="Books collection" />
             <Header toggleDrawer={toggleDrawer} />
-            <InputWrapper />
+            <Search
+                searchInBooks={searchInBooks}
+                backToCollection={backToCollection}
+                searchValue={searchValue}
+            />
+
             {books.length !== 0 ? (
                 <BooksList
-                    books={books}
+                    books={isSearching && searchValue ? filteredBooks : books}
                     isFetchingBooks={isFetchingBooks}
                     handleOpenBookMenu={handleOpenBookMenu}
                     isBookMenuOpen={isBookMenuOpen}
@@ -61,6 +72,10 @@ const BooksCollectionScreen = ({
                     handleCloseBookMenu={handleCloseBookMenu}
                     removeBook={removeBook}
                     bookId={bookId}
+                    isSearching={isSearching}
+                    filteredBooks={filteredBooks}
+                    backToCollection={backToCollection}
+                    searchValue={searchValue}
                 />
             ) : (
                 <EmptyCollection
@@ -78,6 +93,9 @@ function mapStateToProps(state) {
         isFetchingBooks: state.books.isFetchingBooks,
         bookSelected: state.books.bookSelected,
         bookId: state.books.bookId,
+        isSearching: state.books.isSearching,
+        filteredBooks: state.books.filteredBooks,
+        searchValue: state.books.searchValue,
     };
 }
 
@@ -86,6 +104,8 @@ function mapDispatchToProps(dispatch) {
         fetchBooks: () => dispatch(getBooksCollection()),
         toggleMenu: (book, id) => dispatch(toggleSideMenu(book, id)),
         removeBook: (id) => dispatch(deleteBook(id)),
+        searchInBooks: (searchValue) => dispatch(searchBook(searchValue)),
+        backToCollection: () => dispatch(returnToBooks()),
     };
 }
 export default connect(

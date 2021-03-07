@@ -113,27 +113,26 @@ export const menuStyles = StyleSheet.create({
         paddingLeft: 40,
         backgroundColor: colors.background,
         flex: 1,
+        justifyContent: "space-around",
     },
     itemSet: {
         flexDirection: "row",
     },
     title: {
-        marginTop: 100,
+        marginTop: 50,
         fontSize: fontSize.Xlarge,
         color: colors.whiteText,
-        marginBottom: 50,
         flexDirection: "row",
         alignItems: "center",
-        backgroundColor: colors.background,
+        backgroundColor: colors.darkViolet,
         width: 130,
         height: 130,
         borderRadius: 100,
-        marginLeft: 30,
+        marginLeft: 10,
     },
     item: {
         fontSize: fontSize.large,
         color: colors.whiteText,
-        paddingBottom: 70,
         marginLeft: 20,
     },
 });
@@ -174,23 +173,7 @@ export const addBookStyles = StyleSheet.create({
     contentWrapper: {
         marginTop: 120,
     },
-    rateText: {
-        fontSize: fontSize.regular,
-        marginBottom: 10,
-        alignSelf: "center",
-        marginTop: 15,
-        backgroundColor: colors.textGray,
-        width: 150,
-        alignItems: "center",
-        paddingVertical: 8,
-        borderRadius: 8,
-        height: 35,
-    },
-    rateFont: {
-        fontSize: fontSize.regular,
-        color: colors.whiteText,
-        fontStyle: "italic",
-    },
+
     firstSectionWrapper: {
         position: "absolute",
         backgroundColor: colors.buttonActive,
@@ -295,8 +278,8 @@ export const addBookStyles = StyleSheet.create({
     rateContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
-        paddingHorizontal: 45,
-        marginTop: 10,
+        paddingHorizontal: 30,
+        marginTop: 20,
     },
     statusView: {
         flexDirection: "row",
@@ -434,6 +417,21 @@ export const emptyCollectionStyles = StyleSheet.create({
     goAddText: {
         color: colors.buttonActive,
         fontSize: fontSize.regular,
+    },
+});
+
+export const noResultsStyles = StyleSheet.create({
+    text: {
+        fontSize: fontSize.Xlarge,
+        color: colors.menuBackground,
+        fontWeight: "bold",
+    },
+    backWrapper: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginLeft: 10,
+        marginBottom: 20,
+        marginTop: 10,
     },
 });
 

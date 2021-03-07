@@ -47,15 +47,13 @@ export const AddBookStatus = ({ onChangeStatus, status }) => {
                         name="book-open"
                         size={20}
                         color={
-                            isReadingStatus
-                                ? colors.markedGreen
-                                : colors.whiteText
+                            isReadingStatus ? colors.darkRed : colors.whiteText
                         }
                     />
                     <Text
                         style={{
                             color: isReadingStatus
-                                ? colors.markedGreen
+                                ? colors.darkRed
                                 : colors.whiteText,
                         }}
                     >

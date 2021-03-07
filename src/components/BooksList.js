@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { View, Text, ActivityIndicator, SafeAreaView } from "react-native";
+import React, { useRef } from "react";
+import { View, ActivityIndicator, Keyboard, Animated } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
-import { colors } from "../constans/theme";
 import { Book } from "./Book";
 import { SideBookMenu } from "./SideBookMenu";
+import { NothingFound } from "./NothingFound";
+import { BackToBooksCollection } from "./BackToBooksCollection";
 
 export const BooksList = ({
     isFetchingBooks,
@@ -15,8 +16,31 @@ export const BooksList = ({
     handleCloseBookMenu,
     removeBook,
     bookId,
+    filteredBooks,
+    isSearching,
+    backToCollection,
+    searchValue,
 }) => {
-    const renderItem = ({ item }) => {
+    const scrollY = useRef(new Animated.Value(0)).current;
+    const ITEM_SIZE = 210;
+
+    const renderItem = ({ item, index }) => {
+        const inputRange = [-1, 0, ITEM_SIZE * index, ITEM_SIZE * (index + 2)];
+        const opacityInputRange = [
+            -1,
+            0,
+            ITEM_SIZE * index,
+            ITEM_SIZE * (index + 1),
+        ];
+
+        const scale = scrollY.interpolate({
+            inputRange: inputRange,
+            outputRange: [1, 1, 1, 0],
+        });
+        const opacity = scrollY.interpolate({
+            inputRange: opacityInputRange,
+            outputRange: [1, 1, 1, 0],
+        });
         return (
             <Book
                 author={item.author}
@@ -29,24 +53,41 @@ export const BooksList = ({
                 handleOpenBookMenu={handleOpenBookMenu}
                 toggleMenu={toggleMenu}
                 id={item.id}
+                scale={scale}
+                opacity={opacity}
             />
         );
     };
 
+    const handleBackToCollection = () => {
+        Keyboard.dismiss();
+        backToCollection();
+    };
+    const noResults =
+        books && filteredBooks.length === 0 && isSearching && searchValue;
     return (
         <View
             style={{
-                marginTop: 10,
                 flex: 1,
             }}
         >
+            <BackToBooksCollection
+                handleBackToCollection={handleBackToCollection}
+                isSearching={isSearching}
+                searchValue={searchValue}
+            />
+            {noResults ? <NothingFound /> : null}
             {isFetchingBooks ? (
                 <ActivityIndicator size="large" />
             ) : (
-                <FlatList
+                <Animated.FlatList
                     data={books}
                     renderItem={renderItem}
                     keyExtractor={(item) => item.title}
+                    onScroll={Animated.event(
+                        [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+                        { useNativeDriver: true }
+                    )}
                 />
             )}
             {isBookMenuOpen && (

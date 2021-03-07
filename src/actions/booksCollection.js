@@ -52,3 +52,16 @@ export const deleteBook = (bookId) => {
         }
     };
 };
+
+export function searchBook(searchValue) {
+    return {
+        type: ActionType.SEARCH_BOOK,
+        searchValue,
+    };
+}
+
+export function returnToBooks() {
+    return {
+        type: ActionType.RETURN_TO_BOOKS,
+    };
+}

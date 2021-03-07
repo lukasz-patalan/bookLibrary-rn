@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Animated } from "react-native";
 import {
     Octicons,
     MaterialCommunityIcons,
@@ -24,6 +24,8 @@ export const Book = ({
     handleOpenBookMenu,
     toggleMenu,
     id,
+    scale,
+    opacity,
 }) => {
     const isReadingStatus = status === "Reading";
     const onPressSideMenu = (book) => {
@@ -31,7 +33,17 @@ export const Book = ({
         toggleMenu(book, id);
     };
     return (
-        <View style={booksCollection.bookView}>
+        <Animated.View
+            style={{
+                flexDirection: "row",
+                marginBottom: 5,
+                alignSelf: "center",
+                marginTop: 10,
+                paddingBottom: 15,
+                transform: [{ scale }],
+                opacity: opacity,
+            }}
+        >
             {cover ? (
                 <Image source={{ uri: cover }} style={booksCollection.cover} />
             ) : (
@@ -101,7 +113,7 @@ export const Book = ({
                             <FontAwesome5
                                 name="book-open"
                                 size={16}
-                                color={colors.textGray}
+                                color={colors.darkRed}
                                 style={booksCollection.icon}
                             />
                         ) : (
@@ -117,7 +129,7 @@ export const Book = ({
                                 ([booksCollection.itemText],
                                 {
                                     color: isReadingStatus
-                                        ? colors.textGray
+                                        ? colors.darkRed
                                         : colors.markedGreen,
                                 })
                             }
@@ -127,6 +139,6 @@ export const Book = ({
                     </View>
                 </View>
             </View>
-        </View>
+        </Animated.View>
     );
 };

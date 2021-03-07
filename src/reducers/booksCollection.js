@@ -6,6 +6,8 @@ export const signinState = {
     bookId: null,
     filteredBooks: [],
     books: [],
+    isSearching: false,
+    searchValue: "",
 };
 export const booksCollection = (state = signinState, action) => {
     switch (action.type) {
@@ -41,6 +43,25 @@ export const booksCollection = (state = signinState, action) => {
                 ...state,
                 isFetchingBooks: false,
                 books: state.books.filter((el) => el.id !== action.bookId),
+            };
+        case ActionType.SEARCH_BOOK:
+            return {
+                ...state,
+                isSearching: true,
+                searchValue: action.searchValue,
+                filteredBooks: state.books.filter(
+                    (el) =>
+                        el.title.toLowerCase() ===
+                            action.searchValue.toLowerCase() ||
+                        el.author.toLowerCase() ===
+                            action.searchValue.toLowerCase()
+                ),
+            };
+        case ActionType.RETURN_TO_BOOKS:
+            return {
+                ...state,
+                isSearching: false,
+                searchValue: "",
             };
         default:
             return state;

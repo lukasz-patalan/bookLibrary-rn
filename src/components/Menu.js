@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { buttonStyle, colors } from "../constans/theme";
+import { buttonStyle, colors, fontSize } from "../constans/theme";
 import { menuStyles } from "../styles";
 import { MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
 import { Button } from "react-native-elements";
@@ -28,9 +28,17 @@ export const Menu = ({ navigation }) => {
         <View style={menuStyles.container}>
             <View style={menuStyles.title}>
                 <Image
-                    style={{ width: 150, height: 150 }}
+                    style={{ width: 80, height: 80 }}
                     source={require("../assets/logo.png")}
                 />
+                <Text
+                    style={{
+                        color: colors.buttonActive,
+                        fontSize: fontSize.Xlarge,
+                    }}
+                >
+                    BookApp
+                </Text>
             </View>
             <TouchableOpacity onPress={() => navigation.navigate("Dashboard")}>
                 <View style={menuStyles.itemSet}>
@@ -93,7 +101,7 @@ export const Menu = ({ navigation }) => {
                     <Text style={menuStyles.item}>Account settings</Text>
                 </View>
             </TouchableOpacity>
-            <View style={{ paddingTop: 30 }}>
+            <View style={{ paddingTop: 10, paddingBottom: 20 }}>
                 <Button
                     buttonStyle={buttonStyle}
                     onPress={handleSignOut}
