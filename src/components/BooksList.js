@@ -1,6 +1,5 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { View, ActivityIndicator, Keyboard, Animated } from "react-native";
-import { FlatList } from "react-native-gesture-handler";
 import { Book } from "./Book";
 import { SideBookMenu } from "./SideBookMenu";
 import { NothingFound } from "./NothingFound";
@@ -10,7 +9,6 @@ export const BooksList = ({
     isFetchingBooks,
     books,
     handleOpenBookMenu,
-    isBookMenuOpen,
     toggleMenu,
     bookSelected,
     handleCloseBookMenu,
@@ -20,9 +18,30 @@ export const BooksList = ({
     isSearching,
     backToCollection,
     searchValue,
+    navigation,
 }) => {
     const scrollY = useRef(new Animated.Value(0)).current;
     const ITEM_SIZE = 210;
+    const [isDetailsMenuOpen, setDetailsMenuOpen] = useState(false);
+    const hideMenuY = useRef(new Animated.Value(isDetailsMenuOpen ? -280 : 0))
+        .current;
+
+    const openDetailsMenu = () => {
+        Animated.timing(hideMenuY, {
+            toValue: isDetailsMenuOpen ? 0 : -280,
+            duration: 200,
+            useNativeDriver: true,
+        }).start(() => {
+            if (isDetailsMenuOpen) setDetailsMenuOpen(false);
+        });
+    };
+    const transformDetailsMenuStyle = {
+        transform: [
+            {
+                translateY: hideMenuY,
+            },
+        ],
+    };
 
     const renderItem = ({ item, index }) => {
         const inputRange = [-1, 0, ITEM_SIZE * index, ITEM_SIZE * (index + 2)];
@@ -51,10 +70,12 @@ export const BooksList = ({
                 status={item.status}
                 key={item.title}
                 handleOpenBookMenu={handleOpenBookMenu}
+                openDetailsMenu={openDetailsMenu}
                 toggleMenu={toggleMenu}
                 id={item.id}
                 scale={scale}
                 opacity={opacity}
+                setDetailsMenuOpen={setDetailsMenuOpen}
             />
         );
     };
@@ -65,6 +86,14 @@ export const BooksList = ({
     };
     const noResults =
         books && filteredBooks.length === 0 && isSearching && searchValue;
+    useEffect(() => {
+        const listener = navigation.addListener("didFocus", () => {
+            setDetailsMenuOpen(false);
+        });
+        return () => {
+            listener.remove();
+        };
+    }, []);
     return (
         <View
             style={{
@@ -90,12 +119,16 @@ export const BooksList = ({
                     )}
                 />
             )}
-            {isBookMenuOpen && (
+
+            {isDetailsMenuOpen && (
                 <SideBookMenu
                     bookSelected={bookSelected}
                     handleCloseBookMenu={handleCloseBookMenu}
                     removeBook={removeBook}
                     bookId={bookId}
+                    transformDetailsMenuStyle={transformDetailsMenuStyle}
+                    openDetailsMenu={openDetailsMenu}
+                    setDetailsMenuOpen={setDetailsMenuOpen}
                 />
             )}
         </View>

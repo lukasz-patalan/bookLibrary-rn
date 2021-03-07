@@ -21,15 +21,17 @@ export const Book = ({
     category,
     rate,
     status,
-    handleOpenBookMenu,
     toggleMenu,
     id,
     scale,
     opacity,
+    openDetailsMenu,
+    setDetailsMenuOpen,
 }) => {
     const isReadingStatus = status === "Reading";
     const onPressSideMenu = (book) => {
-        handleOpenBookMenu();
+        setDetailsMenuOpen(true);
+        openDetailsMenu();
         toggleMenu(book, id);
     };
     return (
@@ -42,6 +44,7 @@ export const Book = ({
                 paddingBottom: 15,
                 transform: [{ scale }],
                 opacity: opacity,
+                zIndex: 9999999,
             }}
         >
             {cover ? (

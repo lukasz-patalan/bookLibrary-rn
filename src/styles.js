@@ -430,13 +430,13 @@ export const noResultsStyles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         marginLeft: 10,
-        marginBottom: 20,
         marginTop: 10,
     },
 });
 
 export const sideBookMenuStyles = StyleSheet.create({
     wrapper: {
+        marginBottom: -300,
         width: "100%",
         height: 200,
         backgroundColor: colors.darkViolet,

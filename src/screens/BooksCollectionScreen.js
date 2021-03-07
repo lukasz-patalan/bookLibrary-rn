@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { View } from "react-native";
 import { booksCollection } from "../styles";
 
@@ -37,20 +37,12 @@ const BooksCollectionScreen = ({
 
         const listener = navigation.addListener("didFocus", () => {
             fetchBooks();
-            setBookMenuOpen(false);
         });
         return () => {
             listener.remove();
         };
     }, []);
-    const [isBookMenuOpen, setBookMenuOpen] = useState(false);
 
-    const handleOpenBookMenu = () => {
-        setBookMenuOpen(true);
-    };
-    const handleCloseBookMenu = () => {
-        setBookMenuOpen(false);
-    };
     return (
         <View style={booksCollection.pageContainer}>
             <ScreenTitle title="Books collection" />
@@ -65,17 +57,15 @@ const BooksCollectionScreen = ({
                 <BooksList
                     books={isSearching && searchValue ? filteredBooks : books}
                     isFetchingBooks={isFetchingBooks}
-                    handleOpenBookMenu={handleOpenBookMenu}
-                    isBookMenuOpen={isBookMenuOpen}
                     toggleMenu={toggleMenu}
                     bookSelected={bookSelected}
-                    handleCloseBookMenu={handleCloseBookMenu}
                     removeBook={removeBook}
                     bookId={bookId}
                     isSearching={isSearching}
                     filteredBooks={filteredBooks}
                     backToCollection={backToCollection}
                     searchValue={searchValue}
+                    navigation={navigation}
                 />
             ) : (
                 <EmptyCollection
