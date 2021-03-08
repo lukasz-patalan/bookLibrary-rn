@@ -1,12 +1,11 @@
 import React from "react";
 import { View, Text, TextInput } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
-import { MaterialIcons, Foundation, Entypo } from "@expo/vector-icons";
+import { Foundation, Entypo } from "@expo/vector-icons";
 
 import { colors } from "../constans/theme";
 import { addBookStyles } from "../styles";
 import AddCover from "./AddCover";
-import { add } from "react-native-reanimated";
 
 export const AddbookFirstSection = ({
     onChangeAuthor,
@@ -17,6 +16,7 @@ export const AddbookFirstSection = ({
     title,
     cover,
     category,
+    bookCoverStyle,
 }) => {
     return (
         <View>
@@ -30,7 +30,11 @@ export const AddbookFirstSection = ({
                 </View>
                 <View style={addBookStyles.insideFirstSection}>
                     <View style={addBookStyles.coverWrapper}>
-                        <AddCover onChangeCover={onChangeCover} cover={cover} />
+                        <AddCover
+                            onChangeCover={onChangeCover}
+                            cover={cover}
+                            bookCoverStyle={bookCoverStyle}
+                        />
                     </View>
                     <View>
                         <View>

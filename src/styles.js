@@ -9,6 +9,28 @@ export const dashboardStyles = StyleSheet.create({
     },
 });
 
+export const dashboardUIStyles = StyleSheet.create({
+    interface: {
+        backgroundColor: colors.violetView,
+        width: 380,
+        height: 100,
+        marginTop: 700,
+        borderRadius: 20,
+        marginHorizontal: 20,
+        alignSelf: "center",
+        alignItems: "center",
+        justifyContent: "space-around",
+        flexDirection: "row",
+    },
+    button: {
+        width: 70,
+        height: 70,
+        borderRadius: 12,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+});
+
 export const signinStyles = StyleSheet.create({
     formWrapper: {
         marginTop: 40,

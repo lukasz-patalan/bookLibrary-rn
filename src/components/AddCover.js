@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Image, Text, Platform, View } from "react-native";
+import React, { useEffect, useRef } from "react";
+import { Image, Text, Platform, View, Animated } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { MaterialIcons } from "@expo/vector-icons";
 
@@ -7,7 +7,7 @@ import { addBookStyles } from "../styles";
 import { colors } from "../constans/theme";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-export default function AddCover({ onChangeCover, cover }) {
+export default function AddCover({ onChangeCover, cover, bookCoverStyle }) {
     useEffect(() => {
         (async () => {
             if (Platform.OS !== "web") {
@@ -39,11 +39,13 @@ export default function AddCover({ onChangeCover, cover }) {
     return (
         <TouchableOpacity style={addBookStyles.bookCover} onPress={pickImage}>
             {!cover ? (
-                <MaterialIcons
-                    name="photo-camera"
-                    size={75}
-                    color={colors.violetView}
-                />
+                <Animated.View style={bookCoverStyle}>
+                    <MaterialIcons
+                        name="photo-camera"
+                        size={75}
+                        color={colors.violetView}
+                    />
+                </Animated.View>
             ) : (
                 <View>
                     <Image

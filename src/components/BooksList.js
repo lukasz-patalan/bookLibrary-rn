@@ -4,6 +4,7 @@ import { Book } from "./Book";
 import { SideBookMenu } from "./SideBookMenu";
 import { NothingFound } from "./NothingFound";
 import { BackToBooksCollection } from "./BackToBooksCollection";
+import { emptyCollectionStyles } from "../styles";
 
 export const BooksList = ({
     isFetchingBooks,
@@ -107,7 +108,9 @@ export const BooksList = ({
             />
             {noResults ? <NothingFound /> : null}
             {isFetchingBooks ? (
-                <ActivityIndicator size="large" />
+                <View style={emptyCollectionStyles.wrapper}>
+                    <ActivityIndicator size="large" />
+                </View>
             ) : (
                 <Animated.FlatList
                     data={books}

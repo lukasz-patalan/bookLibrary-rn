@@ -10,6 +10,7 @@ export const colors = {
     redView: "#b37673",
     darkRed: "#ba534d",
     violetView: "#25323d",
+    lightBlue: "#9EA0C4",
 };
 
 export const fontSize = {

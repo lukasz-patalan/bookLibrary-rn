@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { View, Text, Animated } from "react-native";
 import { colors } from "../constans/theme";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";

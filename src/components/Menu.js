@@ -28,13 +28,19 @@ export const Menu = ({ navigation }) => {
         <View style={menuStyles.container}>
             <View style={menuStyles.title}>
                 <Image
-                    style={{ width: 80, height: 80 }}
+                    style={{
+                        width: 80,
+                        height: 80,
+                        position: "relative",
+                        right: -10,
+                    }}
                     source={require("../assets/logo.png")}
                 />
                 <Text
                     style={{
                         color: colors.buttonActive,
                         fontSize: fontSize.Xlarge,
+                        marginLeft: 10,
                     }}
                 >
                     BookApp

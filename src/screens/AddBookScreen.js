@@ -1,5 +1,5 @@
-import React from "react";
-import { View } from "react-native";
+import React, { useRef, useEffect } from "react";
+import { View, Animated } from "react-native";
 import { Button } from "react-native-elements";
 import { addBookStyles, dashboardStyles } from "../styles";
 import { AntDesign } from "@expo/vector-icons";
@@ -39,6 +39,77 @@ const AddBookScreen = ({
     onSendNewBook,
     isSendingBook,
 }) => {
+    const coverImgValue = useRef(new Animated.Value(0.5)).current;
+    const bookCoverAnimation = () => {
+        Animated.spring(coverImgValue, {
+            toValue: 1,
+            duration: 250,
+            delay: 200,
+            useNativeDriver: false,
+        }).start();
+    };
+    const bookCoverAnimationReset = () => {
+        Animated.spring(coverImgValue, {
+            toValue: 0.5,
+            duration: 100,
+            useNativeDriver: false,
+        }).start();
+    };
+    const bookCoverStyle = {
+        transform: [{ scale: coverImgValue }],
+    };
+
+    const firstStarAnimationValue = useRef(new Animated.Value(0.3)).current;
+    const secondStarAnimationValue = useRef(new Animated.Value(0.3)).current;
+    const thirdStarAnimationValue = useRef(new Animated.Value(0.3)).current;
+    const fourthStarAnimationValue = useRef(new Animated.Value(0.3)).current;
+    const fifthStarAnimationValue = useRef(new Animated.Value(0.3)).current;
+
+    const starAnimation = (starAnimation, delay) => {
+        Animated.spring(starAnimation, {
+            toValue: 1,
+            duration: 200,
+            delay: delay,
+            useNativeDriver: false,
+        }).start();
+    };
+    const starAnimations = () => {
+        starAnimation(firstStarAnimationValue, 100);
+        starAnimation(secondStarAnimationValue, 160);
+        starAnimation(thirdStarAnimationValue, 230);
+        starAnimation(fourthStarAnimationValue, 290);
+        starAnimation(fifthStarAnimationValue, 330);
+    };
+    const restartStarAnimation = (starAnimation) => {
+        Animated.spring(starAnimation, {
+            toValue: 0.3,
+            duration: 200,
+            useNativeDriver: false,
+        }).start();
+    };
+    const starAnimationsReset = () => {
+        restartStarAnimation(firstStarAnimationValue);
+        restartStarAnimation(secondStarAnimationValue);
+        restartStarAnimation(thirdStarAnimationValue);
+        restartStarAnimation(fourthStarAnimationValue);
+        restartStarAnimation(fifthStarAnimationValue);
+    };
+    const firstStarCoverStyle = {
+        transform: [{ scale: firstStarAnimationValue }],
+    };
+    const secondStarCoverStyle = {
+        transform: [{ scale: secondStarAnimationValue }],
+    };
+    const thirdStarCoverStyle = {
+        transform: [{ scale: thirdStarAnimationValue }],
+    };
+    const fourthStarCoverStyle = {
+        transform: [{ scale: fourthStarAnimationValue }],
+    };
+    const fifthStarCoverStyle = {
+        transform: [{ scale: fifthStarAnimationValue }],
+    };
+
     const toggleDrawer = () => navigation.toggleDrawer();
     const isDisabled = !author || !title || !category || !rate || !status;
 
@@ -47,6 +118,22 @@ const AddBookScreen = ({
             navigation.navigate("BooksCollection")
         );
     };
+    useEffect(() => {
+        bookCoverAnimation();
+        starAnimations();
+        const blurListener = navigation.addListener("didBlur", () => {
+            bookCoverAnimationReset();
+            starAnimationsReset();
+        });
+        const focusListener = navigation.addListener("didFocus", () => {
+            bookCoverAnimation();
+            starAnimations();
+        });
+        return () => {
+            blurListener.remove();
+            focusListener.remove();
+        };
+    }, []);
 
     return (
         <View style={dashboardStyles.dashboardContainer}>
@@ -63,6 +150,7 @@ const AddBookScreen = ({
                     title={title}
                     cover={cover}
                     category={category}
+                    bookCoverStyle={bookCoverStyle}
                 />
                 <View style={addBookStyles.secondSectionWrapper}>
                     <View style={addBookStyles.heartIconWrapper}>
@@ -72,7 +160,15 @@ const AddBookScreen = ({
                             color={colors.whiteText}
                         />
                     </View>
-                    <RateBook onChangeRate={onChangeRate} rate={rate} />
+                    <RateBook
+                        onChangeRate={onChangeRate}
+                        rate={rate}
+                        firstStarCoverStyle={firstStarCoverStyle}
+                        secondStarCoverStyle={secondStarCoverStyle}
+                        thirdStarCoverStyle={thirdStarCoverStyle}
+                        fourthStarCoverStyle={fourthStarCoverStyle}
+                        fifthStarCoverStyle={fifthStarCoverStyle}
+                    />
                     <AddBookStatus
                         onChangeStatus={onChangeStatus}
                         status={status}
