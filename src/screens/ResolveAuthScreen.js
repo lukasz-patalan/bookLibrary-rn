@@ -2,17 +2,18 @@ import React, { useEffect } from "react";
 import { View, Text } from "react-native";
 import { connect } from "react-redux";
 
-import { tryLocalSignin } from "../actions/signin";
+import { checkLoggedIn } from "../actions/signin";
+import { dashboardStyles } from "../styles";
 
 const ResolveAuthScreen = ({ navigation, localSignin }) => {
     useEffect(() => {
         localSignin(
             () => navigation.navigate("mainFlow"),
-            () => navigation.navigate("loginFlow")
+            () => navigation.navigate("Signin")
         );
     }, []);
     return (
-        <View>
+        <View style={dashboardStyles.dashboardContainer}>
             <Text>Loading...</Text>
         </View>
     );
@@ -21,7 +22,7 @@ const ResolveAuthScreen = ({ navigation, localSignin }) => {
 function mapDispatchToProps(dispatch) {
     return {
         localSignin: (goToDashboard, goToLogin) =>
-            dispatch(tryLocalSignin(goToDashboard, goToLogin)),
+            dispatch(checkLoggedIn(goToDashboard, goToLogin)),
     };
 }
 

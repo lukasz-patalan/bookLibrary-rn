@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { View, Keyboard } from "react-native";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { View } from "react-native";
 
 import { SignupForm } from "../components/SignupForm";
 import { colors } from "../constans/theme";
@@ -60,8 +59,10 @@ function mapDispatchToProps(dispatch) {
         onChangeEmail: (emailValue) => dispatch(changeSignupEmail(emailValue)),
         onChangePassword: (passwordValue) =>
             dispatch(changeSignupPassword(passwordValue)),
-        onSignup: (email, password, navigateTo) =>
-            dispatch(signupWithEmailAndPassword(email, password, navigateTo)),
+        onSignup: (email, password, name, navigateTo) =>
+            dispatch(
+                signupWithEmailAndPassword(email, password, name, navigateTo)
+            ),
     };
 }
 

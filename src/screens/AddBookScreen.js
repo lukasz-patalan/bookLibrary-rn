@@ -110,35 +110,29 @@ const AddBookScreen = ({
         transform: [{ scale: fifthStarAnimationValue }],
     };
 
-    const toggleDrawer = () => navigation.toggleDrawer();
     const isDisabled = !author || !title || !category || !rate || !status;
 
     const handleSendNewBook = () => {
         onSendNewBook(author, title, cover, category, rate, status, () =>
-            navigation.navigate("BooksCollection")
+            navigation.navigate("book collection")
         );
     };
     useEffect(() => {
         bookCoverAnimation();
         starAnimations();
-        const blurListener = navigation.addListener("didBlur", () => {
+        navigation.addListener("blur", () => {
             bookCoverAnimationReset();
             starAnimationsReset();
         });
-        const focusListener = navigation.addListener("didFocus", () => {
+        navigation.addListener("focus", () => {
             bookCoverAnimation();
             starAnimations();
         });
-        return () => {
-            blurListener.remove();
-            focusListener.remove();
-        };
-    }, []);
+    }, [navigation]);
 
     return (
         <View style={dashboardStyles.dashboardContainer}>
             <ScreenTitle title="Add new book" />
-            <Header toggleDrawer={toggleDrawer} />
 
             <ScrollView style={addBookStyles.contentWrapper}>
                 <AddbookFirstSection

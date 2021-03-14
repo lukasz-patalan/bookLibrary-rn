@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { View, Keyboard } from "react-native";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { View } from "react-native";
 
 import { colors } from "../constans/theme";
 import {
@@ -59,8 +58,8 @@ function mapDispatchToProps(dispatch) {
         onChangeEmail: (emailValue) => dispatch(changeLoginEmail(emailValue)),
         onChangePassword: (passwordValue) =>
             dispatch(changeLoginPassword(passwordValue)),
-        onSignin: (email, password, rememberMe, goToDashboard) =>
-            dispatch(signin(email, password, rememberMe, goToDashboard)),
+        onSignin: (email, password, goToDashboard) =>
+            dispatch(signin(email, password, goToDashboard)),
         onToggleRemeberMeSwitch: () => dispatch(toggleRemeberMeSwitch()),
     };
 }

@@ -23,13 +23,9 @@ export const SigninForm = ({
     onSignin,
     navigation,
     isLoading,
-    isSwitchRememberMeEnabled,
-    onToggleRemeberMeSwitch,
 }) => {
     const handleSignin = () => {
-        onSignin(email, password, isSwitchRememberMeEnabled, () =>
-            navigation.navigate("Dashboard")
-        );
+        onSignin(email, password, () => navigation.navigate("mainFlow"));
     };
     const navigateToSignup = () => {
         navigation.navigate("Signup");
@@ -81,24 +77,6 @@ export const SigninForm = ({
                         autoCapitalize="none"
                         secureTextEntry={true}
                     />
-                    <View style={signinStyles.switchWrapper}>
-                        <Switch
-                            value={isSwitchRememberMeEnabled}
-                            onValueChange={onToggleRemeberMeSwitch}
-                            trackColor={{
-                                false: colors.darkViolet,
-                                true: colors.buttonActive,
-                            }}
-                            thumbColor={
-                                isSwitchRememberMeEnabled
-                                    ? colors.darkViolet
-                                    : colors.buttonActive
-                            }
-                        />
-                        <Text style={signinStyles.rememberMeWrapper}>
-                            Remeber me?
-                        </Text>
-                    </View>
                 </View>
 
                 <View style={signinStyles.buttonWrapper}>
@@ -111,7 +89,7 @@ export const SigninForm = ({
                 </View>
                 <View style={SignupStyles.bottomInfo}>
                     <Text style={SignupStyles.alreadyText}>
-                        Don't have an account?{" "}
+                        Don't have an account?
                         <TouchableOpacity onPress={navigateToSignup}>
                             <Text style={SignupStyles.signinText}>Sign up</Text>
                         </TouchableOpacity>

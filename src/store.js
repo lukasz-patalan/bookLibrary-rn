@@ -7,12 +7,14 @@ import { signup } from "./reducers/signup";
 import { signin } from "./reducers/signin";
 import { addBook } from "./reducers/addBook";
 import { booksCollection } from "./reducers/booksCollection";
+import { createBlog } from "./reducers/createBlog";
 
 const rootReducer = combineReducers({
     signup: signup,
     signin: signin,
     addBook: addBook,
     books: booksCollection,
+    createBlog: createBlog,
 });
 
 function configureStore() {

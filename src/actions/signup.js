@@ -23,7 +23,12 @@ export function changeSignupPassword(passwordValue) {
     };
 }
 
-export const signupWithEmailAndPassword = (email, password, navigateTo) => {
+export const signupWithEmailAndPassword = (
+    email,
+    password,
+    userName,
+    navigateTo
+) => {
     return async (dispatch) => {
         dispatch({
             type: ActionType.SIGNUP_WITH_EMAIL_AND_PASSWORD,
@@ -33,6 +38,9 @@ export const signupWithEmailAndPassword = (email, password, navigateTo) => {
                 email,
                 password
             );
+            response.user.updateProfile({
+                displayName: userName,
+            });
             dispatch({ type: ActionType.REGISTER_SUCCESS });
             if (response.user) {
                 navigateTo();

@@ -1,5 +1,5 @@
 import { Alert } from "react-native";
-import { auth, fireBase } from "../firebase/firebaseConfig";
+import { auth } from "../firebase/firebaseConfig";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { ActionType } from "./actionTypes";
@@ -24,28 +24,18 @@ export function toggleRemeberMeSwitch() {
     };
 }
 
-const setRememberMe = async (email, password) => {
-    try {
-        await AsyncStorage.setItem("email", email);
-        await AsyncStorage.setItem("password", password);
-    } catch (ex) {
-        Alert.alert(ex.message);
-    }
-};
-export const tryLocalSignin = (goToDashboard, goToLogin) => {
+export const checkLoggedIn = (goToDashboard, goToLogin) => {
     return async (dispatch) => {
-        const email = await AsyncStorage.getItem("email");
-        const password = await AsyncStorage.getItem("password");
+        const isLoggedIn = await AsyncStorage.getItem("logged");
 
-        if (email && password) {
-            await auth.signInWithEmailAndPassword(email, password);
+        if (isLoggedIn) {
             goToDashboard();
         } else {
             goToLogin();
         }
     };
 };
-export const signin = (email, password, rememberMe, goToDashboard) => {
+export const signin = (email, password, goToDashboard) => {
     return async (dispatch) => {
         dispatch({
             type: ActionType.SIGN_IN,
@@ -55,11 +45,9 @@ export const signin = (email, password, rememberMe, goToDashboard) => {
                 email,
                 password
             );
+            await AsyncStorage.setItem("logged", "isLogged");
             dispatch({ type: ActionType.SIGN_IN_SUCCESS });
             if (response.user) {
-                if (rememberMe) {
-                    setRememberMe(email, password);
-                }
                 goToDashboard();
             }
         } catch (ex) {

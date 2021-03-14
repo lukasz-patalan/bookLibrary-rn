@@ -7,7 +7,7 @@ import { emptyCollectionStyles } from "../styles";
 
 export const EmptyCollection = ({ navigation, isFetchingBooks }) => {
     const goToAddBook = () => {
-        navigation.navigate("AddBook");
+        navigation.navigate("add book");
     };
     return (
         <View style={emptyCollectionStyles.wrapper}>

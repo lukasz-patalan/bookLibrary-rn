@@ -30,23 +30,17 @@ const BooksCollectionScreen = ({
     backToCollection,
     searchValue,
 }) => {
-    const toggleDrawer = () => navigation.toggleDrawer();
-
     useEffect(() => {
         fetchBooks();
 
-        const listener = navigation.addListener("didFocus", () => {
+        navigation.addListener("focus", () => {
             fetchBooks();
         });
-        return () => {
-            listener.remove();
-        };
-    }, []);
+    }, [navigation]);
 
     return (
         <View style={booksCollection.pageContainer}>
             <ScreenTitle title="Books collection" />
-            <Header toggleDrawer={toggleDrawer} />
             <Search
                 searchInBooks={searchInBooks}
                 backToCollection={backToCollection}

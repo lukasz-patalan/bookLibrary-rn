@@ -11,6 +11,7 @@ export const colors = {
     darkRed: "#ba534d",
     violetView: "#25323d",
     lightBlue: "#9EA0C4",
+    postViolet: "#122935",
 };
 
 export const fontSize = {
@@ -26,6 +27,15 @@ export const buttonStyle = {
     height: 50,
     backgroundColor: colors.buttonActive,
     borderRadius: 50,
+    alignItems: "center",
+    justifyContent: "center",
+};
+
+export const smallButtonStyle = {
+    width: 100,
+    height: 42,
+    backgroundColor: colors.buttonActive,
+    borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
 };

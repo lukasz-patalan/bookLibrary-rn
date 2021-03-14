@@ -88,13 +88,10 @@ export const BooksList = ({
     const noResults =
         books && filteredBooks.length === 0 && isSearching && searchValue;
     useEffect(() => {
-        const listener = navigation.addListener("didFocus", () => {
+        navigation.addListener("focus", () => {
             setDetailsMenuOpen(false);
         });
-        return () => {
-            listener.remove();
-        };
-    }, []);
+    }, [navigation]);
     return (
         <View
             style={{

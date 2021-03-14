@@ -9,12 +9,162 @@ export const dashboardStyles = StyleSheet.create({
     },
 });
 
+export const createBlogStyles = StyleSheet.create({
+    container: {
+        paddingTop: 40,
+        borderRadius: 8,
+        width: "100%",
+        alignSelf: "center",
+        height: 180,
+        backgroundColor: colors.violetView,
+        fontSize: fontSize.large,
+        paddingLeft: 15,
+    },
+    nameWrapper: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+    },
+    userIcon: {
+        borderRadius: 100,
+        width: 50,
+        height: 50,
+        marginTop: 15,
+    },
+    noUserIcon: {
+        width: 50,
+        height: 50,
+        backgroundColor: colors.textGray,
+        borderRadius: 100,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 15,
+    },
+    userNameText: {
+        color: colors.whiteText,
+        paddingTop: 15,
+        marginLeft: 10,
+    },
+    helloWrapper: {
+        paddingTop: 20,
+        flexDirection: "row",
+        alignItems: "center",
+        alignSelf: "center",
+    },
+    helloText: {
+        color: colors.buttonActive,
+        fontSize: fontSize.regular,
+        marginLeft: 10,
+    },
+    blogCreateContainer: {
+        width: "100%",
+        height: "100%",
+        backgroundColor: colors.violetView,
+    },
+    createBlogNav: {
+        width: "100%",
+        height: 120,
+        backgroundColor: colors.darkViolet,
+        alignItems: "center",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        paddingTop: 50,
+        paddingHorizontal: 10,
+    },
+    headerNav: {
+        paddingLeft: 60,
+        fontSize: fontSize.regular,
+        color: colors.whiteText,
+    },
+    textAreaWrapper: {
+        paddingHorizontal: 15,
+    },
+    createBlogInput: {
+        height: "80%",
+        fontSize: fontSize.regular,
+        textAlignVertical: "top",
+        color: colors.whiteText,
+        marginTop: 20,
+    },
+    userMenu: {
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    pickImageButton: {
+        marginTop: 15,
+        borderWidth: 1,
+        paddingVertical: 4,
+        paddingHorizontal: 8,
+        borderRadius: 5,
+        borderColor: colors.textGray,
+        flexDirection: "row",
+        alignItems: "center",
+        marginLeft: 15,
+    },
+    addPhotoText: {
+        fontSize: fontSize.small,
+        color: colors.textGray,
+        marginLeft: 10,
+    },
+    deletePhotoButton: {
+        backgroundColor: colors.darkViolet,
+        padding: 3,
+        borderRadius: 5,
+        alignSelf: "center",
+        marginTop: 15,
+        marginLeft: 5,
+    },
+    postPhoto: {
+        width: "100%",
+        height: "50%",
+    },
+});
+
+export const postStyles = StyleSheet.create({
+    postWrapper: {
+        backgroundColor: colors.postViolet,
+        marginTop: 20,
+        paddingHorizontal: 15,
+        paddingBottom: 10,
+    },
+    dataText: {
+        color: colors.textGray,
+        paddingLeft: 10,
+        paddingTop: 5,
+    },
+    border: {
+        borderBottomWidth: 1,
+        marginVertical: 10,
+        paddingRight: 10,
+        borderColor: colors.textGray,
+    },
+    contentText: {
+        fontSize: fontSize.regular,
+        color: colors.whiteText,
+        paddingHorizontal: 5,
+        flexShrink: 1,
+    },
+    bottomUIWrapper: {
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    likesNumberText: {
+        fontSize: fontSize.regular,
+        marginLeft: 5,
+        color: colors.whiteText,
+    },
+    hasPhoto: {
+        width: "100%",
+        height: 350,
+        alignSelf: "center",
+        marginTop: 10,
+    },
+});
+
 export const dashboardUIStyles = StyleSheet.create({
     interface: {
-        backgroundColor: colors.violetView,
-        width: 380,
-        height: 100,
-        marginTop: 700,
+        backgroundColor: "blue",
+
         borderRadius: 20,
         marginHorizontal: 20,
         alignSelf: "center",
@@ -41,16 +191,10 @@ export const signinStyles = StyleSheet.create({
     },
     buttonWrapper: {
         alignItems: "center",
-        marginTop: 30,
+        marginTop: 85,
         marginBottom: 120,
     },
-    switchWrapper: {
-        alignSelf: "flex-start",
-        flexDirection: "row",
-        alignItems: "center",
-        marginLeft: 40,
-        marginTop: 25,
-    },
+
     rememberMeWrapper: {
         fontSize: fontSize.regular,
         marginLeft: 10,

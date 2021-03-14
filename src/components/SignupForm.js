@@ -22,7 +22,7 @@ export const SignupForm = ({
     isLoading,
 }) => {
     const handleSignup = () => {
-        onSignup(email, password, () => navigation.navigate("Signin"));
+        onSignup(email, password, name, () => navigation.navigate("Signin"));
     };
     const navigateToSignin = () => {
         navigation.navigate("Signin");
@@ -92,7 +92,7 @@ export const SignupForm = ({
                 </View>
                 <View style={SignupStyles.bottomInfo}>
                     <Text style={SignupStyles.alreadyText}>
-                        Already have an account?{" "}
+                        Already have an account?
                         <TouchableOpacity onPress={navigateToSignin}>
                             <Text style={SignupStyles.signinText}>Sign in</Text>
                         </TouchableOpacity>
