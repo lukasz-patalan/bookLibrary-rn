@@ -1,11 +1,10 @@
 import React, { useRef, useEffect } from "react";
-import { View, Animated } from "react-native";
+import { View, Animated, Text } from "react-native";
 import { Button } from "react-native-elements";
 import { addBookStyles, dashboardStyles } from "../styles";
 import { AntDesign } from "@expo/vector-icons";
 import { connect } from "react-redux";
 
-import { Header } from "../components/Header";
 import { ScreenTitle } from "../components/ScreenTitle";
 import { RateBook } from "../components/RateBook";
 import { AddbookFirstSection } from "../components/AddbookFirstSection";
@@ -19,7 +18,7 @@ import {
     changeTitle,
     postNewBook,
 } from "../actions/addBook";
-import { buttonStyle, colors } from "../constans/theme";
+import { smallButtonStyle, colors } from "../constans/theme";
 import { ScrollView } from "react-native-gesture-handler";
 
 const AddBookScreen = ({
@@ -133,8 +132,16 @@ const AddBookScreen = ({
     return (
         <View style={dashboardStyles.dashboardContainer}>
             <ScreenTitle title="Add new book" />
-
-            <ScrollView style={addBookStyles.contentWrapper}>
+            <View style={addBookStyles.saveButtonWrapper}>
+                <Button
+                    onPress={handleSendNewBook}
+                    title="Save book"
+                    loading={isSendingBook}
+                    buttonStyle={smallButtonStyle}
+                    disabled={isDisabled}
+                />
+            </View>
+            <View>
                 <AddbookFirstSection
                     onChangeAuthor={onChangeAuthor}
                     onChangeTitle={onChangeTitle}
@@ -168,24 +175,7 @@ const AddBookScreen = ({
                         status={status}
                     />
                 </View>
-                <View
-                    style={{
-                        marginTop: 40,
-                        alignSelf: "center",
-                    }}
-                >
-                    <Button
-                        onPress={handleSendNewBook}
-                        title="Save book"
-                        loading={isSendingBook}
-                        buttonStyle={buttonStyle}
-                        disabled={isDisabled}
-                        disabledStyle={{
-                            backgroundColor: colors.violetView,
-                        }}
-                    />
-                </View>
-            </ScrollView>
+            </View>
         </View>
     );
 };

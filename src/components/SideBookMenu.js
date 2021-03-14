@@ -1,9 +1,10 @@
-import React, { useRef } from "react";
+import React from "react";
 import { View, Text, Animated } from "react-native";
-import { colors } from "../constans/theme";
-import { AntDesign, MaterialIcons } from "@expo/vector-icons";
+import { colors, smallButtonStyle } from "../constans/theme";
+import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { sideBookMenuStyles } from "../styles";
+import { Button } from "react-native-elements";
 
 export const SideBookMenu = ({
     bookSelected,
@@ -35,34 +36,14 @@ export const SideBookMenu = ({
                 </TouchableOpacity>
             </View>
             <Text style={sideBookMenuStyles.titleWrapper}>
-                {`"${bookSelected}"`}
+                {`Do you want delete "${bookSelected}" ?`}
             </Text>
             <View style={sideBookMenuStyles.menuItemsWrapper}>
-                <TouchableOpacity style={sideBookMenuStyles.editWrapper}>
-                    <AntDesign
-                        name="edit"
-                        size={24}
-                        color={colors.buttonActive}
-                        style={{ marginRight: 10 }}
-                    />
-                    <Text style={sideBookMenuStyles.editText}>
-                        Edit details
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
+                <Button
                     onPress={handleRemoveBook}
-                    style={sideBookMenuStyles.deleteWrapper}
-                >
-                    <MaterialIcons
-                        name="delete"
-                        size={25}
-                        color={colors.buttonActive}
-                        style={{ marginRight: 5 }}
-                    />
-                    <Text style={sideBookMenuStyles.deleteText}>
-                        Delete book
-                    </Text>
-                </TouchableOpacity>
+                    title="Yes"
+                    buttonStyle={smallButtonStyle}
+                />
             </View>
         </Animated.View>
     );

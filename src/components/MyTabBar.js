@@ -2,7 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { colors } from "../constans/theme";
-import { Entypo } from "@expo/vector-icons";
+import { Entypo, Ionicons } from "@expo/vector-icons";
 
 export function MyTabBar({ state, descriptors, navigation }) {
     return (
@@ -101,6 +101,17 @@ export function MyTabBar({ state, descriptors, navigation }) {
                         {route.name === "add book" ? (
                             <Entypo
                                 name="add-to-list"
+                                size={30}
+                                style={{
+                                    color: isFocused
+                                        ? colors.buttonActive
+                                        : colors.whiteText,
+                                }}
+                            />
+                        ) : null}
+                        {route.name === "settings" ? (
+                            <Ionicons
+                                name="settings-outline"
                                 size={30}
                                 style={{
                                     color: isFocused

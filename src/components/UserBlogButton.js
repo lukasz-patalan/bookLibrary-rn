@@ -9,7 +9,7 @@ import { UserName } from "./UserName";
 import { colors } from "../constans/theme";
 import { createBlogStyles } from "../styles";
 
-export const UserBlogButton = ({ navigation, signout }) => {
+export const UserBlogButton = ({ navigation }) => {
     const userAvatar = auth?.currentUser?.photoURL;
     const userName = auth?.currentUser?.displayName;
 
@@ -21,7 +21,7 @@ export const UserBlogButton = ({ navigation, signout }) => {
             style={createBlogStyles.container}
             onPress={goToCreateBlog}
         >
-            <UserName avatar={userAvatar} name={userName} signout={signout} />
+            <UserName avatar={userAvatar} name={userName} />
             <View style={createBlogStyles.helloWrapper}>
                 <Feather name="edit" size={20} color={colors.whiteText} />
                 <Text style={createBlogStyles.helloText}>

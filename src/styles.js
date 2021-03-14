@@ -15,7 +15,7 @@ export const createBlogStyles = StyleSheet.create({
         borderRadius: 8,
         width: "100%",
         alignSelf: "center",
-        height: 180,
+        height: 160,
         backgroundColor: colors.violetView,
         fontSize: fontSize.large,
         paddingLeft: 15,
@@ -40,6 +40,7 @@ export const createBlogStyles = StyleSheet.create({
         alignItems: "center",
         marginTop: 15,
     },
+
     userNameText: {
         color: colors.whiteText,
         paddingTop: 15,
@@ -336,10 +337,12 @@ export const searchInputStyles = StyleSheet.create({
 });
 
 export const addBookStyles = StyleSheet.create({
-    contentWrapper: {
-        marginTop: 120,
+    saveButtonWrapper: {
+        marginTop: 60,
+        alignItems: "flex-end",
+        marginRight: 20,
+        marginBottom: 20,
     },
-
     firstSectionWrapper: {
         position: "absolute",
         backgroundColor: colors.buttonActive,
@@ -604,7 +607,7 @@ export const sideBookMenuStyles = StyleSheet.create({
     wrapper: {
         marginBottom: -300,
         width: "100%",
-        height: 200,
+        height: 180,
         backgroundColor: colors.darkViolet,
         borderRadius: 10,
         paddingTop: 15,
@@ -626,32 +629,69 @@ export const sideBookMenuStyles = StyleSheet.create({
         color: colors.whiteText,
         fontSize: fontSize.large,
         alignSelf: "center",
-        fontStyle: "italic",
     },
     menuItemsWrapper: {
         flexDirection: "row",
         justifyContent: "center",
+        marginTop: 30,
+    },
+});
+
+export const settingsStyles = StyleSheet.create({
+    avatar: {
+        width: "100%",
+        height: "50%",
+    },
+    noAvatar: {
+        backgroundColor: colors.textGray,
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100%",
+        height: "50%",
+    },
+    editButton: {
+        backgroundColor: colors.whiteText,
+        width: 50,
+        height: 50,
+        alignItems: "center",
+        justifyContent: "center",
+        alignSelf: "center",
+        borderRadius: 50,
+        bottom: 25,
+    },
+    title: {
+        alignSelf: "center",
+        fontSize: fontSize.Xlarge,
+        color: colors.whiteText,
+        marginBottom: 30,
+    },
+    dataWrapper: {
+        flexDirection: "row",
+        justifyContent: "space-around",
+        paddingHorizontal: 15,
+        backgroundColor: colors.background,
+        alignItems: "center",
+        paddingVertical: 20,
+    },
+    dataRow: {
+        height: 50,
+        borderRadius: 5,
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    dataText: {
+        fontSize: fontSize.regular,
+        color: colors.whiteText,
+        flexShrink: 1,
+        marginLeft: 50,
+    },
+    icon: {
+        position: "absolute",
+        left: 10,
+    },
+    buttonWrapper: {
+        alignSelf: "center",
         marginTop: 40,
-    },
-    editWrapper: {
-        flexDirection: "row",
         alignItems: "center",
-        alignSelf: "flex-start",
-    },
-    editText: {
-        color: colors.buttonActive,
-        fontSize: fontSize.regular,
-        marginLeft: 5,
-    },
-    deleteWrapper: {
-        flexDirection: "row",
-        alignItems: "center",
-        alignSelf: "flex-start",
-        marginLeft: 80,
-    },
-    deleteText: {
-        color: colors.buttonActive,
-        fontSize: fontSize.regular,
-        marginLeft: 5,
     },
 });

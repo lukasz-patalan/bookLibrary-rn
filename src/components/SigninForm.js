@@ -1,10 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
-import {
-    TextInput,
-    TouchableOpacity,
-    Switch,
-} from "react-native-gesture-handler";
+import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 
 import { signinStyles, SignupStyles } from "../styles";
 import {
@@ -12,7 +8,7 @@ import {
     MaterialIcons,
     FontAwesome,
 } from "@expo/vector-icons";
-import { buttonStyle, colors, fontSize } from "../constans/theme";
+import { buttonStyle, colors } from "../constans/theme";
 import { Button } from "react-native-elements";
 
 export const SigninForm = ({

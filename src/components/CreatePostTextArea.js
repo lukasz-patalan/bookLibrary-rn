@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, Keyboard } from "react-native";
+import { View, Text, Image } from "react-native";
 import {
     TextInput,
     TouchableWithoutFeedback,

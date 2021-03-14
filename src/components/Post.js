@@ -20,8 +20,10 @@ export const Post = ({
     addLike,
     likedBy,
     dislikePost,
+    authorUid,
 }) => {
     const userUid = auth?.currentUser?.uid;
+    const userPhoto = auth?.currentUser?.photoURL;
     const [hearts, setHearts] = useState(likes);
     const hasLikedPost = likedBy.filter((el) => el === userUid);
     const [isHeartSelected, setHeartSelected] = useState(!!hasLikedPost.length);
@@ -41,7 +43,12 @@ export const Post = ({
             <View style={{ flexDirection: "row", alignItems: "center" }}>
                 {authorAvatar ? (
                     <Image
-                        source={{ uri: authorAvatar }}
+                        source={{
+                            uri:
+                                userUid === authorUid
+                                    ? userPhoto
+                                    : authorAvatar,
+                        }}
                         style={createBlogStyles.userIcon}
                     />
                 ) : (

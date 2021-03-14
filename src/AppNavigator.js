@@ -10,6 +10,7 @@ import DashboardScreen from "./screens/DashboardScreen";
 import BooksCollectionScreen from "./screens/BooksCollectionScreen";
 import AddBookScreen from "./screens/AddBookScreen";
 import { MyTabBar } from "./components/MyTabBar";
+import { SettingsScreen } from "./screens/SettingsScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -23,6 +24,7 @@ const TabsComponent = () => {
                 component={BooksCollectionScreen}
             />
             <Tab.Screen name="add book" component={AddBookScreen} />
+            <Tab.Screen name="settings" component={SettingsScreen} />
         </Tab.Navigator>
     );
 };

@@ -1,5 +1,5 @@
 import { Alert } from "react-native";
-import { fireBase, firestore } from "../firebase/firebaseConfig";
+import { auth, fireBase, firestore } from "../firebase/firebaseConfig";
 import { ActionType } from "./actionTypes";
 
 export function changePostContent(content) {
@@ -56,6 +56,7 @@ export const addNewPost = (
             const post = await firestore.collection("posts").add({
                 author: author,
                 authorAvatar: authorAvatar,
+                authorUid: auth.currentUser.uid,
                 content: content,
                 photo: photo,
                 createdAt: formatDate(),

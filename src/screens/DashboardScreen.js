@@ -1,15 +1,10 @@
 import React, { useEffect } from "react";
 import { View, FlatList, ActivityIndicator } from "react-native";
 import { connect } from "react-redux";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-
 import { Post } from "../components/Post";
 import { UserBlogButton } from "../components/UserBlogButton";
-
 import { dislikePost, getPosts, likePost } from "../actions/createBlog";
-
 import { auth } from "../firebase/firebaseConfig";
-
 import { colors } from "../constans/theme";
 import { dashboardStyles } from "../styles";
 
@@ -27,12 +22,7 @@ const DashboardScreen = ({
             fetchPosts();
         });
     }, [navigation]);
-    const handleSignOut = async () => {
-        await auth.signOut();
-        await AsyncStorage.removeItem("logged");
 
-        navigation.navigate("Signin");
-    };
     const renderItem = ({ item }) => {
         return (
             <Post
@@ -44,6 +34,7 @@ const DashboardScreen = ({
                 photo={item.photo}
                 postId={item.id}
                 likedBy={item.likedBy}
+                authorUid={item.authorUid}
                 addLike={addLike}
                 dislikePost={dislikePost}
             />
@@ -56,7 +47,7 @@ const DashboardScreen = ({
                 { backgroundColor: colors.darkViolet },
             ]}
         >
-            <UserBlogButton navigation={navigation} signout={handleSignOut} />
+            <UserBlogButton navigation={navigation} />
             {isFetchingPosts ? (
                 <ActivityIndicator size="large" style={{ paddingTop: 120 }} />
             ) : (
@@ -64,6 +55,7 @@ const DashboardScreen = ({
                     data={posts}
                     renderItem={renderItem}
                     keyExtractor={(item) => item.id.toString()}
+                    showsVerticalScrollIndicator={false}
                 />
             )}
         </View>
