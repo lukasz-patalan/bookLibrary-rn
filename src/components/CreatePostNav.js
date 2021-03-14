@@ -14,17 +14,19 @@ export const CreatePostNav = ({
     handleSubmitPost,
     isButtonDisabled,
     isAddingPost,
+    title,
+    buttonTitle,
 }) => {
     return (
         <View style={createBlogStyles.createBlogNav}>
             <TouchableWithoutFeedback onPress={returnToDashboard}>
                 <AntDesign name="close" size={24} color={colors.whiteText} />
             </TouchableWithoutFeedback>
-            <Text style={createBlogStyles.headerNav}>Create book post</Text>
+            <Text style={createBlogStyles.headerNav}>{title}</Text>
             <Button
                 buttonStyle={smallButtonStyle}
                 onPress={handleSubmitPost}
-                title="Public"
+                title={buttonTitle}
                 disabled={isButtonDisabled}
                 loading={isAddingPost}
             />

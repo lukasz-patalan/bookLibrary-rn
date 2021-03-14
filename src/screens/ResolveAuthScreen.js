@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import { checkLoggedIn } from "../actions/signin";
 import { colors } from "../constans/theme";
-import { dashboardStyles } from "../styles";
+import { authScreenStyles, dashboardStyles } from "../styles";
 
 const ResolveAuthScreen = ({ navigation, localSignin }) => {
     const logoAnimationValue = useRef(new Animated.Value(1)).current;
@@ -40,32 +40,13 @@ const ResolveAuthScreen = ({ navigation, localSignin }) => {
     return (
         <View style={dashboardStyles.dashboardContainer}>
             <Animated.View style={LogoAnimationStyle}>
-                <View
-                    style={{
-                        marginTop: 250,
-                        backgroundColor: colors.darkViolet,
-                        borderRadius: 230,
-                        width: 330,
-                        height: 330,
-                        justifyContent: "center",
-                        alignItems: "center",
-                        alignSelf: "center",
-                    }}
-                >
+                <View style={authScreenStyles.logoView}>
                     <Image
                         source={require("../assets/logo.png")}
-                        style={{ width: 300, height: 300, alignSelf: "center" }}
+                        style={authScreenStyles.logoImg}
                     />
                 </View>
-                <Text
-                    style={{
-                        alignSelf: "center",
-                        fontSize: 40,
-                        color: colors.buttonActive,
-                    }}
-                >
-                    BookApp
-                </Text>
+                <Text style={authScreenStyles.title}>BookApp</Text>
             </Animated.View>
         </View>
     );

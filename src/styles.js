@@ -9,6 +9,29 @@ export const dashboardStyles = StyleSheet.create({
     },
 });
 
+export const authScreenStyles = StyleSheet.create({
+    logoView: {
+        marginTop: 250,
+        backgroundColor: colors.darkViolet,
+        borderRadius: 230,
+        width: 330,
+        height: 330,
+        justifyContent: "center",
+        alignItems: "center",
+        alignSelf: "center",
+    },
+    logoImg: {
+        width: 300,
+        height: 300,
+        alignSelf: "center",
+    },
+    title: {
+        alignSelf: "center",
+        fontSize: 40,
+        color: colors.buttonActive,
+    },
+});
+
 export const createBlogStyles = StyleSheet.create({
     container: {
         paddingTop: 40,

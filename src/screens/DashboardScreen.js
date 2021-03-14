@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { Post } from "../components/Post";
 import { UserBlogButton } from "../components/UserBlogButton";
 import { dislikePost, getPosts, likePost } from "../actions/createBlog";
-import { auth } from "../firebase/firebaseConfig";
 import { colors } from "../constans/theme";
 import { dashboardStyles } from "../styles";
 
@@ -37,6 +36,7 @@ const DashboardScreen = ({
                 authorUid={item.authorUid}
                 addLike={addLike}
                 dislikePost={dislikePost}
+                navigation={navigation}
             />
         );
     };

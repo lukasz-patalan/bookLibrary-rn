@@ -11,6 +11,7 @@ import BooksCollectionScreen from "./screens/BooksCollectionScreen";
 import AddBookScreen from "./screens/AddBookScreen";
 import { MyTabBar } from "./components/MyTabBar";
 import { SettingsScreen } from "./screens/SettingsScreen";
+import EditScreen from "./screens/EditScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -58,6 +59,11 @@ export const AppNavigator = () => {
             <Stack.Screen
                 name="mainFlow"
                 component={TabsComponent}
+                options={{ gestureEnabled: false }}
+            />
+            <Stack.Screen
+                name="Edit"
+                component={EditScreen}
                 options={{ gestureEnabled: false }}
             />
         </Stack.Navigator>

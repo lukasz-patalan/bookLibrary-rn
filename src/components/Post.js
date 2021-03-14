@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Image } from "react-native";
 import { Text, View } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
 import { colors } from "../constans/theme";
 import { createBlogStyles, postStyles } from "../styles";
@@ -21,6 +21,7 @@ export const Post = ({
     likedBy,
     dislikePost,
     authorUid,
+    navigation,
 }) => {
     const userUid = auth?.currentUser?.uid;
     const userPhoto = auth?.currentUser?.photoURL;
@@ -66,6 +67,24 @@ export const Post = ({
                         {createdAt.toString()}
                     </Text>
                 </View>
+                {userUid === authorUid ? (
+                    <View style={{ left: 170 }}>
+                        <TouchableWithoutFeedback
+                            onPress={useCallback(() => {
+                                navigation.navigate("Edit", {
+                                    postContent: content,
+                                    postId: postId,
+                                });
+                            }, [])}
+                        >
+                            <MaterialIcons
+                                name="edit"
+                                size={24}
+                                color={colors.buttonActive}
+                            />
+                        </TouchableWithoutFeedback>
+                    </View>
+                ) : null}
             </View>
             <View style={postStyles.border} />
             {photo ? (

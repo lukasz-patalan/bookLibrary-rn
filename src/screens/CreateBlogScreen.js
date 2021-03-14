@@ -67,6 +67,8 @@ const CreateBlogScreen = ({
                 handleSubmitPost={handleSubmitPost}
                 isButtonDisabled={isButtonDisabled}
                 isAddingPost={isAddingPost}
+                title="Create book post"
+                buttonTitle="Public"
             />
             <CreatePostTextArea
                 userAvatar={userAvatar}
