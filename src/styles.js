@@ -32,6 +32,58 @@ export const authScreenStyles = StyleSheet.create({
     },
 });
 
+export const editStyles = StyleSheet.create({
+    closeWrapper: {
+        backgroundColor: colors.darkViolet,
+        padding: 3,
+        borderRadius: 5,
+        width: 30,
+    },
+});
+
+export const commentsStyles = StyleSheet.create({
+    backButtonWrapper: {
+        marginTop: 60,
+        marginLeft: 10,
+    },
+    backRow: {
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    backText: {
+        fontSize: fontSize.regular,
+        color: colors.buttonActive,
+    },
+    inputWrapper: {
+        position: "absolute",
+        bottom: 0,
+        paddingTop: 10,
+        paddingBottom: 30,
+        width: "100%",
+        alignSelf: "center",
+        justifyContent: "center",
+        flexDirection: "row",
+        alignItems: "center",
+        backgroundColor: colors.postViolet,
+    },
+    input: {
+        width: 320,
+        height: "auto",
+        textAlignVertical: "top",
+        minHeight: 45,
+        backgroundColor: colors.violetView,
+        borderRadius: 20,
+        maxHeight: 150,
+        paddingHorizontal: 15,
+        paddingTop: 15,
+        paddingBottom: 15,
+        color: colors.whiteText,
+    },
+    sendButton: {
+        marginLeft: 15,
+    },
+});
+
 export const createBlogStyles = StyleSheet.create({
     container: {
         paddingTop: 40,
@@ -182,6 +234,11 @@ export const postStyles = StyleSheet.create({
         height: 350,
         alignSelf: "center",
         marginTop: 10,
+    },
+    bottomSectionWrapper: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
     },
 });
 

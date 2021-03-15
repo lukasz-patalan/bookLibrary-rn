@@ -5,7 +5,7 @@ import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
 import { colors } from "../constans/theme";
 import { createBlogStyles, postStyles } from "../styles";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { auth } from "../firebase/firebaseConfig";
 
@@ -74,6 +74,7 @@ export const Post = ({
                                 navigation.navigate("Edit", {
                                     postContent: content,
                                     postId: postId,
+                                    postPhoto: photo,
                                 });
                             }, [])}
                         >
@@ -99,17 +100,48 @@ export const Post = ({
                 <Text style={postStyles.contentText}>{content}</Text>
             )}
             <View style={postStyles.border} />
-            <TouchableWithoutFeedback
-                style={postStyles.bottomUIWrapper}
-                onPress={handleAddLike}
-            >
-                <AntDesign
-                    name={isHeartSelected ? "heart" : "hearto"}
-                    size={24}
-                    color={colors.darkRed}
-                />
-                <Text style={postStyles.likesNumberText}>{hearts}</Text>
-            </TouchableWithoutFeedback>
+            <View style={postStyles.bottomSectionWrapper}>
+                <View>
+                    <TouchableWithoutFeedback
+                        style={postStyles.bottomUIWrapper}
+                        onPress={handleAddLike}
+                    >
+                        <AntDesign
+                            name={isHeartSelected ? "heart" : "hearto"}
+                            size={24}
+                            color={colors.darkRed}
+                        />
+                        <Text style={postStyles.likesNumberText}>{hearts}</Text>
+                    </TouchableWithoutFeedback>
+                </View>
+                <View>
+                    <TouchableWithoutFeedback
+                        style={postStyles.bottomUIWrapper}
+                        onPress={useCallback(() => {
+                            navigation.navigate("Comments", {
+                                author,
+                                authorAvatar,
+                                content,
+                                photo,
+                                createdAt,
+                                likes,
+                                postId,
+                                addLike,
+                                likedBy,
+                                dislikePost,
+                                authorUid,
+                            });
+                        }, [])}
+                    >
+                        <Ionicons
+                            name="chatbox-outline"
+                            size={25}
+                            color={colors.textGray}
+                        />
+                        <Text style={postStyles.likesNumberText}>comments</Text>
+                    </TouchableWithoutFeedback>
+                </View>
+            </View>
         </View>
     );
 };
