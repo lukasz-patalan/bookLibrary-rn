@@ -22,6 +22,8 @@ export const Post = ({
     dislikePost,
     authorUid,
     navigation,
+    comments,
+    fetchPosts,
 }) => {
     const userUid = auth?.currentUser?.uid;
     const userPhoto = auth?.currentUser?.photoURL;
@@ -38,6 +40,24 @@ export const Post = ({
             setHearts(hearts - 1);
             dislikePost(postId, hearts - 1, userUid);
         }
+    };
+
+    const handleCommentsPress = () => {
+        navigation.navigate("Comments", {
+            author,
+            authorAvatar,
+            content,
+            photo,
+            createdAt,
+            likes,
+            postId,
+            addLike,
+            likedBy,
+            dislikePost,
+            authorUid,
+            comments,
+            fetchPosts,
+        });
     };
     return (
         <View style={postStyles.postWrapper}>
@@ -117,21 +137,7 @@ export const Post = ({
                 <View>
                     <TouchableWithoutFeedback
                         style={postStyles.bottomUIWrapper}
-                        onPress={useCallback(() => {
-                            navigation.navigate("Comments", {
-                                author,
-                                authorAvatar,
-                                content,
-                                photo,
-                                createdAt,
-                                likes,
-                                postId,
-                                addLike,
-                                likedBy,
-                                dislikePost,
-                                authorUid,
-                            });
-                        }, [])}
+                        onPress={handleCommentsPress}
                     >
                         <Ionicons
                             name="chatbox-outline"

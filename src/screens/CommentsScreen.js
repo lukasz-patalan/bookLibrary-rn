@@ -1,14 +1,21 @@
 import React from "react";
-import { View, Text, Keyboard } from "react-native";
+import { View, Text, Keyboard, Image } from "react-native";
 import { Post } from "../components/Post";
 import { colors } from "../constans/theme";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 
-import { commentsStyles, dashboardStyles } from "../styles";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
-import { CommentInput } from "../components/CommentInput";
+import { commentsStyles, createBlogStyles, dashboardStyles } from "../styles";
+import {
+    FlatList,
+    TouchableWithoutFeedback,
+} from "react-native-gesture-handler";
+import CommentInput from "../components/CommentInput";
+import { connect } from "react-redux";
+import { UserName } from "../components/UserName";
+import { Comment } from "../components/Comment";
+import { auth } from "../firebase/firebaseConfig";
 
-export const CommentsScreen = ({ route, navigation: { goBack } }) => {
+const CommentsScreen = ({ route, navigation: { goBack }, hasSentComment }) => {
     const {
         author,
         authorAvatar,
@@ -21,6 +28,8 @@ export const CommentsScreen = ({ route, navigation: { goBack } }) => {
         likedBy,
         dislikePost,
         authorUid,
+        comments,
+        fetchPosts,
     } = route.params;
 
     const DismissKeyboard = ({ children }) => (
@@ -28,6 +37,16 @@ export const CommentsScreen = ({ route, navigation: { goBack } }) => {
             {children}
         </TouchableWithoutFeedback>
     );
+    const renderItem = ({ item }) => {
+        return (
+            <Comment
+                authorAvatar={item.authorAvatar}
+                author={item.author}
+                comment={item.comment}
+            />
+        );
+    };
+
     return (
         <DismissKeyboard>
             <View
@@ -63,8 +82,24 @@ export const CommentsScreen = ({ route, navigation: { goBack } }) => {
                     dislikePost={dislikePost}
                     navigation={null}
                 />
-                <CommentInput />
+
+                <FlatList
+                    data={comments}
+                    renderItem={renderItem}
+                    keyExtractor={() => Math.random().toString()}
+                    showsVerticalScrollIndicator={false}
+                    updateCellsBatchingPeriod={4000}
+                />
+                <CommentInput postId={postId} fetchPosts={fetchPosts} />
             </View>
         </DismissKeyboard>
     );
 };
+
+function mapStateToProps(state) {
+    return {
+        comment: state.comments.comment,
+    };
+}
+
+export default connect(mapStateToProps, null)(CommentsScreen);

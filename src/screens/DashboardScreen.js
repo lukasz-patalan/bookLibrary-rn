@@ -34,9 +34,11 @@ const DashboardScreen = ({
                 postId={item.id}
                 likedBy={item.likedBy}
                 authorUid={item.authorUid}
+                comments={item.comments}
                 addLike={addLike}
                 dislikePost={dislikePost}
                 navigation={navigation}
+                fetchPosts={fetchPosts}
             />
         );
     };

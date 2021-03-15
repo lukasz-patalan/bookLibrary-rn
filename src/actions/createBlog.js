@@ -29,17 +29,6 @@ function formatDate() {
     return date.concat([time]);
 }
 
-const getCreatedAt = () => {
-    let d = new Date(),
-        month = "" + (d.getMonth() + 1),
-        day = "" + d.getDate(),
-        year = d.getFullYear();
-
-    if (month.length < 2) month = "0" + month;
-    if (day.length < 2) day = "0" + day;
-
-    return [year, month, day].join("-");
-};
 export const addNewPost = (
     author,
     authorAvatar,
@@ -63,6 +52,7 @@ export const addNewPost = (
                 id: Math.random().toString(),
                 likes: 0,
                 likedBy: [],
+                comments: [],
             });
 
             dispatch({

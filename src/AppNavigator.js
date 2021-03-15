@@ -12,7 +12,7 @@ import AddBookScreen from "./screens/AddBookScreen";
 import { MyTabBar } from "./components/MyTabBar";
 import { SettingsScreen } from "./screens/SettingsScreen";
 import EditScreen from "./screens/EditScreen";
-import { CommentsScreen } from "./screens/CommentsScreen";
+import CommentsScreen from "./screens/CommentsScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();

@@ -8,6 +8,7 @@ import { signin } from "./reducers/signin";
 import { addBook } from "./reducers/addBook";
 import { booksCollection } from "./reducers/booksCollection";
 import { createBlog } from "./reducers/createBlog";
+import { comments } from "./reducers/comments";
 
 const rootReducer = combineReducers({
     signup: signup,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     addBook: addBook,
     books: booksCollection,
     createBlog: createBlog,
+    comments: comments,
 });
 
 function configureStore() {

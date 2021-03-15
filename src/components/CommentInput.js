@@ -4,11 +4,20 @@ import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { FontAwesome } from "@expo/vector-icons";
 import { commentsStyles } from "../styles";
 import { colors } from "../constans/theme";
+import { addComment, changeCommentValue } from "../actions/comments";
+import { connect } from "react-redux";
 
-export const CommentInput = () => {
+const CommentInput = ({
+    comment,
+    onChangeComment,
+    postId,
+    postComment,
+    fetchPosts,
+}) => {
     const topValue = useRef(new Animated.Value(0)).current;
+    const [isKeyboardShown, setKeyboardShown] = useState(false);
+
     useEffect(() => {
-        console.log("render!!!");
         Keyboard.addListener("keyboardWillShow", keyboardWillShow);
         Keyboard.addListener("keyboardWillHide", keyboardWillHide);
 
@@ -21,9 +30,11 @@ export const CommentInput = () => {
         const keyboardHeight = e.startCoordinates.height;
         Animated.timing(topValue, {
             toValue: -keyboardHeight,
-            duration: 190,
+            duration: 180,
             useNativeDriver: true,
         }).start();
+
+        setKeyboardShown(true);
     };
 
     const keyboardWillHide = () => {
@@ -32,6 +43,7 @@ export const CommentInput = () => {
             duration: 0,
             useNativeDriver: true,
         }).start();
+        setKeyboardShown(false);
     };
     const InputStyle = {
         transform: [
@@ -43,29 +55,51 @@ export const CommentInput = () => {
             },
         ],
     };
-    const [comment, setComment] = useState("");
 
+    const handleAddComment = async () => {
+        if (!comment) {
+            Keyboard.dismiss();
+        } else {
+            await postComment(postId, comment);
+            Keyboard.dismiss();
+            fetchPosts();
+        }
+    };
     return (
         <Animated.View style={[commentsStyles.inputWrapper, InputStyle]}>
             <View>
                 <TextInput
                     style={commentsStyles.input}
                     value={comment}
-                    onChangeText={(value) => setComment(value)}
+                    onChangeText={onChangeComment}
                     multiline={true}
                 />
             </View>
 
             <TouchableWithoutFeedback
                 style={commentsStyles.sendButton}
-                onPress={Keyboard.dismiss}
+                onPress={handleAddComment}
             >
                 <FontAwesome
                     name="send-o"
                     size={24}
-                    color={colors.buttonActive}
+                    color={comment ? colors.buttonActive : colors.textGray}
                 />
             </TouchableWithoutFeedback>
         </Animated.View>
     );
 };
+
+function mapStateToProps(state) {
+    return {
+        comment: state.comments.comment,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        onChangeComment: (comment) => dispatch(changeCommentValue(comment)),
+        postComment: (id, comment) => dispatch(addComment(id, comment)),
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CommentInput);
