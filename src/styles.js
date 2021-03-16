@@ -563,7 +563,7 @@ export const addBookStyles = StyleSheet.create({
         backgroundColor: colors.violetView,
         color: colors.whiteText,
         fontSize: fontSize.regular,
-        paddingLeft: 12,
+        paddingHorizontal: 12,
     },
     selectIcon: {
         position: "relative",

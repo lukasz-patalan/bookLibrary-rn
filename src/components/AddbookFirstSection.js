@@ -49,7 +49,6 @@ export const AddbookFirstSection = ({
                         <View>
                             <Text style={addBookStyles.label}>Title</Text>
                             <TextInput
-                                multiline={true}
                                 style={addBookStyles.input}
                                 onChangeText={onChangeTitle}
                                 value={title}
