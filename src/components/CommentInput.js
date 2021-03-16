@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { View, Animated, TextInput, Keyboard } from "react-native";
+import React from "react";
+import { View, TextInput, Keyboard } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { FontAwesome } from "@expo/vector-icons";
 import { commentsStyles } from "../styles";
@@ -15,44 +15,6 @@ const CommentInput = ({
     postComment,
     commentsList,
 }) => {
-    const topValue = useRef(new Animated.Value(0)).current;
-
-    useEffect(() => {
-        Keyboard.addListener("keyboardWillShow", keyboardWillShow);
-        Keyboard.addListener("keyboardWillHide", keyboardWillHide);
-
-        return () => {
-            Keyboard.removeListener("keyboardWillShow", keyboardWillShow);
-            Keyboard.removeListener("keyboardWillHide", keyboardWillHide);
-        };
-    }, []);
-
-    const keyboardWillShow = (e) => {
-        const keyboardHeight = e.startCoordinates.height;
-        Animated.timing(topValue, {
-            toValue: -keyboardHeight,
-            duration: 180,
-            useNativeDriver: true,
-        }).start();
-    };
-
-    const keyboardWillHide = () => {
-        Animated.timing(topValue, {
-            toValue: 0,
-            duration: 0,
-            useNativeDriver: true,
-        }).start();
-    };
-    const InputStyle = {
-        transform: [
-            {
-                translateY: topValue.interpolate({
-                    inputRange: [0, 300],
-                    outputRange: [0, 350],
-                }),
-            },
-        ],
-    };
     const handleAddComment = () => {
         if (!comment) {
             Keyboard.dismiss();
@@ -69,7 +31,7 @@ const CommentInput = ({
         }
     };
     return (
-        <Animated.View style={[commentsStyles.inputWrapper, InputStyle]}>
+        <View style={commentsStyles.inputWrapper}>
             <View>
                 <TextInput
                     style={commentsStyles.input}
@@ -89,7 +51,7 @@ const CommentInput = ({
                     color={comment ? colors.buttonActive : colors.textGray}
                 />
             </TouchableWithoutFeedback>
-        </Animated.View>
+        </View>
     );
 };
 

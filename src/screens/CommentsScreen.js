@@ -1,19 +1,24 @@
 import React from "react";
-import { View, Text, Keyboard, Image, ScrollView } from "react-native";
+import {
+    View,
+    Text,
+    Keyboard,
+    KeyboardAvoidingView,
+    Platform,
+    LogBox,
+} from "react-native";
 import { Post } from "../components/Post";
 import { colors } from "../constans/theme";
-import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
-import { commentsStyles, createBlogStyles, dashboardStyles } from "../styles";
+import { commentsStyles, dashboardStyles } from "../styles";
 import {
     FlatList,
     TouchableWithoutFeedback,
 } from "react-native-gesture-handler";
 import CommentInput from "../components/CommentInput";
 import { connect } from "react-redux";
-import { UserName } from "../components/UserName";
 import { Comment } from "../components/Comment";
-import { auth } from "../firebase/firebaseConfig";
 import { clearCommentValue } from "../actions/comments";
 
 const CommentsScreen = ({
@@ -38,6 +43,10 @@ const CommentsScreen = ({
         fetchPosts,
     } = route.params;
 
+    LogBox.ignoreLogs([
+        "Non-serializable values were found in the navigation state",
+    ]);
+
     const DismissKeyboard = ({ children }) => (
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             {children}
@@ -57,61 +66,63 @@ const CommentsScreen = ({
         clearComment();
     };
     return (
-        <View>
-            <DismissKeyboard>
-                <View
-                    style={[
-                        dashboardStyles.dashboardContainer,
-                        { backgroundColor: colors.darkViolet },
-                    ]}
-                >
-                    <View style={commentsStyles.backButtonWrapper}>
-                        <TouchableWithoutFeedback
-                            style={commentsStyles.backRow}
-                            onPress={handleGoBack}
-                        >
-                            <Ionicons
-                                name="caret-back-outline"
-                                size={15}
-                                color={colors.buttonActive}
-                            />
-                            <Text style={commentsStyles.backText}>Back</Text>
-                        </TouchableWithoutFeedback>
-                    </View>
-                    <FlatList
-                        ListHeaderComponent={
-                            <View style={{ marginTop: -20 }}>
-                                <Post
-                                    author={author}
-                                    authorAvatar={authorAvatar}
-                                    content={content}
-                                    createdAt={createdAt}
-                                    likes={likes}
-                                    photo={photo}
-                                    postId={postId}
-                                    likedBy={likedBy}
-                                    authorUid={authorUid}
-                                    addLike={addLike}
-                                    dislikePost={dislikePost}
-                                    navigation={null}
-                                />
-                            </View>
-                        }
-                        data={comments}
-                        renderItem={renderItem}
-                        keyExtractor={() => Math.random().toString()}
-                        showsVerticalScrollIndicator={false}
-                        style={{ marginBottom: 100 }}
-                    />
+        <DismissKeyboard>
+            <View
+                style={[
+                    dashboardStyles.dashboardContainer,
+                    { backgroundColor: colors.darkViolet },
+                ]}
+            >
+                <View style={commentsStyles.backButtonWrapper}>
+                    <TouchableWithoutFeedback
+                        style={commentsStyles.backRow}
+                        onPress={handleGoBack}
+                    >
+                        <Ionicons
+                            name="caret-back-outline"
+                            size={15}
+                            color={colors.buttonActive}
+                        />
+                        <Text style={commentsStyles.backText}>Back</Text>
+                    </TouchableWithoutFeedback>
                 </View>
-            </DismissKeyboard>
-            <CommentInput
-                postId={postId}
-                fetchPosts={fetchPosts}
-                extraCommentToList={extraCommentToList}
-                commentsList={comments}
-            />
-        </View>
+                <FlatList
+                    ListHeaderComponent={
+                        <View style={{ marginTop: -20 }}>
+                            <Post
+                                author={author}
+                                authorAvatar={authorAvatar}
+                                content={content}
+                                createdAt={createdAt}
+                                likes={likes}
+                                photo={photo}
+                                postId={postId}
+                                likedBy={likedBy}
+                                authorUid={authorUid}
+                                addLike={addLike}
+                                dislikePost={dislikePost}
+                                navigation={null}
+                            />
+                        </View>
+                    }
+                    data={comments}
+                    renderItem={renderItem}
+                    keyExtractor={() => Math.random().toString()}
+                    showsVerticalScrollIndicator={false}
+                    ListFooterComponent={() => <View style={{ height: 20 }} />}
+                />
+                <KeyboardAvoidingView
+                    behavior={Platform.OS === "ios" ? "padding" : "height"}
+                >
+                    <CommentInput
+                        postId={postId}
+                        fetchPosts={fetchPosts}
+                        extraCommentToList={extraCommentToList}
+                        commentsList={comments}
+                    />
+                </KeyboardAvoidingView>
+            </View>
+        </DismissKeyboard>
     );
 };
 
