@@ -10,27 +10,21 @@ export function changeCommentValue(comment) {
 }
 
 export const addComment = (postId, comment) => {
-    const commentCopy = comment.slice();
     return async (dispatch) => {
         dispatch({
             type: ActionType.ADD_COMMENT,
-            extraCommentToList: {
-                author: auth.currentUser.displayName,
-                authorPhoto: auth.currentUser.photoURL,
-                comment: commentCopy,
-            },
         });
         try {
             const querySnapshot = await firestore
                 .collection("posts")
                 .where("id", "==", postId)
                 .get();
-
             await querySnapshot.docs[0].ref.update({
                 comments: fireBase.firestore.FieldValue.arrayUnion({
                     author: auth.currentUser.displayName,
                     authorPhoto: auth.currentUser.photoURL,
                     comment: comment,
+                    id: Math.random(),
                 }),
             });
             dispatch({

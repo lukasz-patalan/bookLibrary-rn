@@ -9,6 +9,24 @@ export const dashboardStyles = StyleSheet.create({
     },
 });
 
+export const navStyles = StyleSheet.create({
+    wrapper: {
+        flexDirection: "row",
+        backgroundColor: colors.postViolet,
+        height: 85,
+        justifyContent: "space-around",
+        alignItems: "center",
+        paddingBottom: 15,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 1,
+            height: -5,
+        },
+        shadowOpacity: 0.5,
+        shadowRadius: 6.27,
+    },
+});
+
 export const authScreenStyles = StyleSheet.create({
     logoView: {
         marginTop: 250,
@@ -43,9 +61,9 @@ export const editStyles = StyleSheet.create({
 
 export const commentsStyles = StyleSheet.create({
     backButtonWrapper: {
-        marginTop: 60,
-        marginLeft: 10,
-        marginBottom: 15,
+        paddingTop: 60,
+        paddingLeft: 10,
+        paddingBottom: 15,
     },
     backRow: {
         flexDirection: "row",
@@ -82,6 +100,43 @@ export const commentsStyles = StyleSheet.create({
     },
     sendButton: {
         marginLeft: 15,
+    },
+    commentWrapper: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginLeft: 20,
+        marginTop: 20,
+    },
+    userImage: {
+        borderRadius: 100,
+        width: 50,
+        height: 50,
+    },
+    userNoImage: {
+        width: 50,
+        height: 50,
+        backgroundColor: colors.textGray,
+        borderRadius: 100,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    contentWrapper: {
+        backgroundColor: colors.violetView,
+        marginLeft: 10,
+        minHeight: 60,
+        width: 305,
+        borderRadius: 12,
+        paddingHorizontal: 10,
+        paddingTop: 10,
+        paddingBottom: 15,
+    },
+    authorText: {
+        fontWeight: "bold",
+        color: colors.textGray,
+    },
+    commentText: {
+        marginTop: 5,
+        color: colors.whiteText,
     },
 });
 

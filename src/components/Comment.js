@@ -2,34 +2,19 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { colors } from "../constans/theme";
+import { commentsStyles } from "../styles";
 
 export const Comment = ({ authorAvatar, author, comment }) => {
     return (
-        <View
-            style={{
-                flexDirection: "row",
-                alignItems: "center",
-                marginLeft: 20,
-                marginTop: 20,
-            }}
-        >
+        <View style={commentsStyles.commentWrapper}>
             <View>
                 {authorAvatar ? (
                     <Image
                         source={{ uri: authorAvatar }}
-                        style={{ borderRadius: 100, width: 50, height: 50 }}
+                        style={commentsStyles.userImage}
                     />
                 ) : (
-                    <View
-                        style={{
-                            width: 50,
-                            height: 50,
-                            backgroundColor: colors.textGray,
-                            borderRadius: 100,
-                            justifyContent: "center",
-                            alignItems: "center",
-                        }}
-                    >
+                    <View style={commentsStyles.userNoImage}>
                         <MaterialCommunityIcons
                             name="account"
                             size={30}
@@ -38,29 +23,10 @@ export const Comment = ({ authorAvatar, author, comment }) => {
                     </View>
                 )}
             </View>
-            <View
-                style={{
-                    backgroundColor: colors.violetView,
-                    marginLeft: 10,
-                    minHeight: 60,
-                    width: 300,
-                    borderRadius: 12,
-                    paddingLeft: 10,
-                    paddingVertical: 10,
-                }}
-            >
+            <View style={commentsStyles.contentWrapper}>
                 <View>
-                    <Text
-                        style={{
-                            fontWeight: "bold",
-                            color: colors.textGray,
-                        }}
-                    >
-                        {author}
-                    </Text>
-                    <Text style={{ marginTop: 5, color: colors.whiteText }}>
-                        {comment}
-                    </Text>
+                    <Text style={commentsStyles.authorText}>{author}</Text>
+                    <Text style={commentsStyles.commentText}>{comment}</Text>
                 </View>
             </View>
         </View>

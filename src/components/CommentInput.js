@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { View, Animated, TextInput, Keyboard } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { FontAwesome } from "@expo/vector-icons";
@@ -26,6 +26,7 @@ const CommentInput = ({
             Keyboard.removeListener("keyboardWillHide", keyboardWillHide);
         };
     }, []);
+
     const keyboardWillShow = (e) => {
         const keyboardHeight = e.startCoordinates.height;
         Animated.timing(topValue, {
@@ -61,6 +62,7 @@ const CommentInput = ({
                 author: auth.currentUser.displayName,
                 authorPhoto: auth.currentUser.photoURL,
                 comment: commentCopy,
+                id: Math.random(),
             });
             postComment(postId, comment);
             Keyboard.dismiss();

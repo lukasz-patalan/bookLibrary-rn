@@ -3,26 +3,11 @@ import { View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { colors } from "../constans/theme";
 import { Entypo, Ionicons } from "@expo/vector-icons";
+import { navStyles } from "../styles";
 
 export function MyTabBar({ state, descriptors, navigation }) {
     return (
-        <View
-            style={{
-                flexDirection: "row",
-                backgroundColor: colors.postViolet,
-                height: 85,
-                justifyContent: "space-around",
-                alignItems: "center",
-                paddingBottom: 15,
-                shadowColor: "#000",
-                shadowOffset: {
-                    width: 1,
-                    height: -5,
-                },
-                shadowOpacity: 0.3,
-                shadowRadius: 6.27,
-            }}
-        >
+        <View style={navStyles.wrapper}>
             {state.routes.map((route, index) => {
                 const { options } = descriptors[route.key];
                 const label =

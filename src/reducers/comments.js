@@ -5,7 +5,7 @@ export const commentsState = {
     isSendingComment: false,
     hasSentComment: false,
     isFetchingComments: false,
-    extraCommentToList: {},
+    extraCommentToList: false,
 };
 export const comments = (state = commentsState, action) => {
     switch (action.type) {
@@ -19,7 +19,7 @@ export const comments = (state = commentsState, action) => {
                 ...state,
                 isSendingComment: true,
                 hasSentComment: false,
-                extraCommentToList: action.extraCommentToList,
+                extraCommentToList: true,
                 comment: "",
             };
         case ActionType.ADD_COMMENT_SUCCESS:
@@ -27,6 +27,7 @@ export const comments = (state = commentsState, action) => {
                 ...state,
                 isSendingComment: false,
                 hasSentComment: true,
+                extraCommentToList: false,
             };
         case ActionType.ADD_COMMENT_FAIL:
             return {

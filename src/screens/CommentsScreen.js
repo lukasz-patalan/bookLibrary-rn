@@ -78,31 +78,31 @@ const CommentsScreen = ({
                             <Text style={commentsStyles.backText}>Back</Text>
                         </TouchableWithoutFeedback>
                     </View>
-                    <ScrollView>
-                        <Post
-                            author={author}
-                            authorAvatar={authorAvatar}
-                            content={content}
-                            createdAt={createdAt}
-                            likes={likes}
-                            photo={photo}
-                            postId={postId}
-                            likedBy={likedBy}
-                            authorUid={authorUid}
-                            addLike={addLike}
-                            dislikePost={dislikePost}
-                            navigation={null}
-                        />
-
-                        <FlatList
-                            data={comments}
-                            renderItem={renderItem}
-                            keyExtractor={() => Math.random().toString()}
-                            showsVerticalScrollIndicator={false}
-                            style={{ marginBottom: 100 }}
-                            scrollEnabled={false}
-                        />
-                    </ScrollView>
+                    <FlatList
+                        ListHeaderComponent={
+                            <View style={{ marginTop: -20 }}>
+                                <Post
+                                    author={author}
+                                    authorAvatar={authorAvatar}
+                                    content={content}
+                                    createdAt={createdAt}
+                                    likes={likes}
+                                    photo={photo}
+                                    postId={postId}
+                                    likedBy={likedBy}
+                                    authorUid={authorUid}
+                                    addLike={addLike}
+                                    dislikePost={dislikePost}
+                                    navigation={null}
+                                />
+                            </View>
+                        }
+                        data={comments}
+                        renderItem={renderItem}
+                        keyExtractor={() => Math.random().toString()}
+                        showsVerticalScrollIndicator={false}
+                        style={{ marginBottom: 100 }}
+                    />
                 </View>
             </DismissKeyboard>
             <CommentInput
