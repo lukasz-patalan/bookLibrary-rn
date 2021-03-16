@@ -6,16 +6,16 @@ import { commentsStyles } from "../styles";
 import { colors } from "../constans/theme";
 import { addComment, changeCommentValue } from "../actions/comments";
 import { connect } from "react-redux";
+import { auth } from "../firebase/firebaseConfig";
 
 const CommentInput = ({
     comment,
     onChangeComment,
     postId,
     postComment,
-    fetchPosts,
+    commentsList,
 }) => {
     const topValue = useRef(new Animated.Value(0)).current;
-    const [isKeyboardShown, setKeyboardShown] = useState(false);
 
     useEffect(() => {
         Keyboard.addListener("keyboardWillShow", keyboardWillShow);
@@ -33,8 +33,6 @@ const CommentInput = ({
             duration: 180,
             useNativeDriver: true,
         }).start();
-
-        setKeyboardShown(true);
     };
 
     const keyboardWillHide = () => {
@@ -43,7 +41,6 @@ const CommentInput = ({
             duration: 0,
             useNativeDriver: true,
         }).start();
-        setKeyboardShown(false);
     };
     const InputStyle = {
         transform: [
@@ -55,14 +52,18 @@ const CommentInput = ({
             },
         ],
     };
-
-    const handleAddComment = async () => {
+    const handleAddComment = () => {
         if (!comment) {
             Keyboard.dismiss();
         } else {
-            await postComment(postId, comment);
+            const commentCopy = comment.slice();
+            commentsList.push({
+                author: auth.currentUser.displayName,
+                authorPhoto: auth.currentUser.photoURL,
+                comment: commentCopy,
+            });
+            postComment(postId, comment);
             Keyboard.dismiss();
-            fetchPosts();
         }
     };
     return (

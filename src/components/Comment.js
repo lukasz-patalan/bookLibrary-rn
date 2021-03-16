@@ -46,7 +46,7 @@ export const Comment = ({ authorAvatar, author, comment }) => {
                     width: 300,
                     borderRadius: 12,
                     paddingLeft: 10,
-                    paddingTop: 10,
+                    paddingVertical: 10,
                 }}
             >
                 <View>

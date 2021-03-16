@@ -45,6 +45,7 @@ export const commentsStyles = StyleSheet.create({
     backButtonWrapper: {
         marginTop: 60,
         marginLeft: 10,
+        marginBottom: 15,
     },
     backRow: {
         flexDirection: "row",
@@ -202,6 +203,10 @@ export const postStyles = StyleSheet.create({
         marginTop: 20,
         paddingHorizontal: 15,
         paddingBottom: 10,
+    },
+    userWrapper: {
+        flexDirection: "row",
+        alignItems: "center",
     },
     dataText: {
         color: colors.textGray,

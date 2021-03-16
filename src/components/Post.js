@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { Image } from "react-native";
 import { Text, View } from "react-native";
+import { useRoute } from "@react-navigation/native";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
 import { colors } from "../constans/theme";
@@ -42,6 +43,8 @@ export const Post = ({
         }
     };
 
+    const route = useRoute().name;
+
     const handleCommentsPress = () => {
         navigation.navigate("Comments", {
             author,
@@ -59,9 +62,10 @@ export const Post = ({
             fetchPosts,
         });
     };
+
     return (
         <View style={postStyles.postWrapper}>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <View style={postStyles.userWrapper}>
                 {authorAvatar ? (
                     <Image
                         source={{
@@ -87,7 +91,7 @@ export const Post = ({
                         {createdAt.toString()}
                     </Text>
                 </View>
-                {userUid === authorUid ? (
+                {userUid === authorUid && route === "dashboard" ? (
                     <View style={{ left: 170 }}>
                         <TouchableWithoutFeedback
                             onPress={useCallback(() => {
@@ -135,17 +139,28 @@ export const Post = ({
                     </TouchableWithoutFeedback>
                 </View>
                 <View>
-                    <TouchableWithoutFeedback
-                        style={postStyles.bottomUIWrapper}
-                        onPress={handleCommentsPress}
-                    >
-                        <Ionicons
-                            name="chatbox-outline"
-                            size={25}
-                            color={colors.textGray}
-                        />
-                        <Text style={postStyles.likesNumberText}>comments</Text>
-                    </TouchableWithoutFeedback>
+                    {route === "dashboard" ? (
+                        <TouchableWithoutFeedback
+                            style={postStyles.bottomUIWrapper}
+                            onPress={handleCommentsPress}
+                        >
+                            <Ionicons
+                                name="chatbox-outline"
+                                size={25}
+                                color={colors.textGray}
+                            />
+                            {comments ? (
+                                <Text style={postStyles.likesNumberText}>
+                                    <Text>{` ${comments?.length}`}</Text>{" "}
+                                    comments
+                                </Text>
+                            ) : (
+                                <Text style={postStyles.likesNumberText}>
+                                    comments
+                                </Text>
+                            )}
+                        </TouchableWithoutFeedback>
+                    ) : null}
                 </View>
             </View>
         </View>

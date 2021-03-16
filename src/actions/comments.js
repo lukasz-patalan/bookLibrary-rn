@@ -10,9 +10,15 @@ export function changeCommentValue(comment) {
 }
 
 export const addComment = (postId, comment) => {
+    const commentCopy = comment.slice();
     return async (dispatch) => {
         dispatch({
             type: ActionType.ADD_COMMENT,
+            extraCommentToList: {
+                author: auth.currentUser.displayName,
+                authorPhoto: auth.currentUser.photoURL,
+                comment: commentCopy,
+            },
         });
         try {
             const querySnapshot = await firestore
@@ -36,3 +42,9 @@ export const addComment = (postId, comment) => {
         }
     };
 };
+
+export function clearCommentValue() {
+    return {
+        type: ActionType.CLEAR_COMMENT,
+    };
+}
