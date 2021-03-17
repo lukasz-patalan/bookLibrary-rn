@@ -10,6 +10,7 @@ import {
     toggleRemeberMeSwitch,
 } from "../actions/signin";
 import { SigninForm } from "../components/SigninForm";
+import { SignupStyles } from "../styles";
 
 const SigninScreen = ({
     onChangeEmail,
@@ -23,12 +24,7 @@ const SigninScreen = ({
     onToggleRemeberMeSwitch,
 }) => {
     return (
-        <View
-            style={{
-                backgroundColor: colors.darkViolet,
-                flex: 1,
-            }}
-        >
+        <View style={SignupStyles.page}>
             <SigninForm
                 onChangeEmail={onChangeEmail}
                 onChangePassword={onChangePassword}

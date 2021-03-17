@@ -9,6 +9,30 @@ export const dashboardStyles = StyleSheet.create({
     },
 });
 
+export const logoHeaderStyles = StyleSheet.create({
+    wrapper: {
+        flexDirection: "row",
+        alignSelf: "center",
+        alignItems: "center",
+    },
+    logo: {
+        marginTop: 100,
+        marginBottom: 40,
+        backgroundColor: colors.darkViolet,
+        borderRadius: 100,
+    },
+    logoImg: {
+        width: 100,
+        height: 100,
+    },
+    logoText: {
+        fontSize: fontSize.sectionTitle,
+        marginTop: 20,
+        marginLeft: 15,
+        color: colors.buttonActive,
+    },
+});
+
 export const navStyles = StyleSheet.create({
     wrapper: {
         flexDirection: "row",
@@ -28,6 +52,11 @@ export const navStyles = StyleSheet.create({
 });
 
 export const authScreenStyles = StyleSheet.create({
+    page: {
+        width: "100%",
+        height: "100%",
+        backgroundColor: colors.postViolet,
+    },
     logoView: {
         marginTop: 250,
         backgroundColor: colors.darkViolet,
@@ -329,10 +358,8 @@ export const dashboardUIStyles = StyleSheet.create({
 
 export const signinStyles = StyleSheet.create({
     formWrapper: {
-        marginTop: 40,
         paddingTop: 50,
-        backgroundColor: colors.background,
-        borderTopLeftRadius: 80,
+
         paddingBottom: 180,
     },
     buttonWrapper: {
@@ -349,11 +376,12 @@ export const signinStyles = StyleSheet.create({
 });
 
 export const SignupStyles = StyleSheet.create({
+    page: {
+        backgroundColor: colors.postViolet,
+        flex: 1,
+    },
     formWrapper: {
-        marginTop: 40,
-        paddingTop: 100,
-        backgroundColor: colors.background,
-        borderTopLeftRadius: 80,
+        paddingTop: 50,
         paddingBottom: 180,
     },
     title: {

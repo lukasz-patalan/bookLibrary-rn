@@ -38,7 +38,7 @@ const ResolveAuthScreen = ({ navigation, localSignin }) => {
         }, 800);
     }, []);
     return (
-        <View style={dashboardStyles.dashboardContainer}>
+        <View style={authScreenStyles.page}>
             <Animated.View style={LogoAnimationStyle}>
                 <View style={authScreenStyles.logoView}>
                     <Image

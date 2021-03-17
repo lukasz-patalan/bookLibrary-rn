@@ -10,6 +10,7 @@ import {
     changeSignupPassword,
     signupWithEmailAndPassword,
 } from "../actions/signup";
+import { SignupStyles } from "../styles";
 
 const SignupScreen = ({
     onChangeName,
@@ -23,12 +24,7 @@ const SignupScreen = ({
     isLoading,
 }) => {
     return (
-        <View
-            style={{
-                backgroundColor: colors.darkViolet,
-                flex: 1,
-            }}
-        >
+        <View style={SignupStyles.page}>
             <SignupForm
                 onChangeName={onChangeName}
                 onChangeEmail={onChangeEmail}

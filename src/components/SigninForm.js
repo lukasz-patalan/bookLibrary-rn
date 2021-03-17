@@ -1,15 +1,16 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import { Button } from "react-native-elements";
 
-import { signinStyles, SignupStyles } from "../styles";
+import { authScreenStyles, signinStyles, SignupStyles } from "../styles";
 import {
     MaterialCommunityIcons,
     MaterialIcons,
     FontAwesome,
 } from "@expo/vector-icons";
-import { buttonStyle, colors } from "../constans/theme";
-import { Button } from "react-native-elements";
+import { buttonStyle, colors, fontSize } from "../constans/theme";
+import { FormHeader } from "./FormHeader";
 
 export const SigninForm = ({
     onChangeEmail,
@@ -29,15 +30,8 @@ export const SigninForm = ({
 
     return (
         <View>
-            <Text style={SignupStyles.title}>Welcome</Text>
-
+            <FormHeader title="Welcome" />
             <View style={signinStyles.formWrapper}>
-                <MaterialIcons
-                    name="account-circle"
-                    size={70}
-                    color={colors.darkViolet}
-                    style={{ alignSelf: "center", marginBottom: 10 }}
-                />
                 <View style={SignupStyles.inputContainer}></View>
                 <View style={SignupStyles.inputContainer}>
                     <MaterialCommunityIcons
@@ -87,7 +81,10 @@ export const SigninForm = ({
                     <Text style={SignupStyles.alreadyText}>
                         Don't have an account?
                         <TouchableOpacity onPress={navigateToSignup}>
-                            <Text style={SignupStyles.signinText}>Sign up</Text>
+                            <Text style={SignupStyles.signinText}>
+                                {" "}
+                                Sign up
+                            </Text>
                         </TouchableOpacity>
                     </Text>
                 </View>

@@ -9,6 +9,7 @@ import {
 } from "@expo/vector-icons";
 import { buttonStyle, colors } from "../constans/theme";
 import { Button } from "react-native-elements";
+import { FormHeader } from "./FormHeader";
 
 export const SignupForm = ({
     onChangeName,
@@ -29,7 +30,8 @@ export const SignupForm = ({
     };
     return (
         <View>
-            <Text style={SignupStyles.title}>Create account</Text>
+            <FormHeader title="Create an account" />
+
             <View style={SignupStyles.formWrapper}>
                 <View style={SignupStyles.inputContainer}>
                     <MaterialCommunityIcons
@@ -94,7 +96,10 @@ export const SignupForm = ({
                     <Text style={SignupStyles.alreadyText}>
                         Already have an account?
                         <TouchableOpacity onPress={navigateToSignin}>
-                            <Text style={SignupStyles.signinText}>Sign in</Text>
+                            <Text style={SignupStyles.signinText}>
+                                {" "}
+                                Sign in
+                            </Text>
                         </TouchableOpacity>
                     </Text>
                 </View>
